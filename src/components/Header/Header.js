@@ -6,8 +6,8 @@ export default function Header (props) {
             <div>
                 <img src={logo} className="header__logo" alt="Header logo"/>
                 <div className="header__auth">
-                    <p className="header__signup-button">Регистрация</p>
-                    <button className="header__signin-button">Войти</button>
+                    <input className="header__signup-button" type="button" value="Регистрация"/>
+                    <input className="header__signin-button" type="button" value="Войти"/>
                 </div>
             </div>
         </header>

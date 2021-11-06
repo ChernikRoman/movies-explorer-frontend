@@ -1,4 +1,13 @@
+/*Подключение Normalize.css*/
 @import url(./vendor/normalize.css);
+
+/*Подключение шрифта*/
+@import url(./fonts/inter/inter.css);
+
+/*Стили root*/
+.root {
+    font-family: inter, sans-serif;
+}
 
 /*Стили header*/
 @import url(./components/Header/blocks/header.css);
@@ -12,3 +21,4 @@
 @import url(./components/Footer/blocks/__text-about/footer__text-about.css);
 @import url(./components/Footer/blocks/__links/footer__links.css);
 @import url(./components//Footer/blocks/__link/footer__link.css);
+
