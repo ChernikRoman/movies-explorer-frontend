@@ -1,0 +1,10 @@
+.footer__link {
+    display: block;
+    color: #ffffff;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+.footer__link:first-of-type {
+    margin-left: auto;
+}

@@ -1,0 +1,14 @@
+@import url(./vendor/normalize.css);
+
+/*Стили header*/
+@import url(./components/Header/blocks/header.css);
+@import url(./components/Header/blocks/__auth/header__auth.css);
+@import url(./components/Header/blocks/__logo/header__logo.css);
+@import url(./components//Header//blocks/__signin-button/header__signin-button.css);
+@import url(./components//Header//blocks/__signup-button/header__signup-button.css);
+
+/*Стили footer*/
+@import url(./components/Footer/blocks/footer.css);
+@import url(./components/Footer/blocks/__text-about/footer__text-about.css);
+@import url(./components/Footer/blocks/__links/footer__links.css);
+@import url(./components//Footer/blocks/__link/footer__link.css);
