@@ -1,5 +1,6 @@
-.tech__title {
+.techs__title {
     margin: 0;
     padding-bottom: 23px;
+    font-weight: normal;
     border-bottom: 1px solid #dadada;
 }

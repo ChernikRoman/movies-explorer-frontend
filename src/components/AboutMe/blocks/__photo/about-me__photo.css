@@ -1,0 +1,9 @@
+.about-me__photo {
+    position: absolute;
+    width: 270px;
+    height: 327px;
+    top: 66px;
+    right: 0;
+    background-color: #0400ff7a;
+    border-radius: 10px;
+}

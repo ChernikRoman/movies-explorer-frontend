@@ -1,4 +1,4 @@
-.tech__techs-item {
+.techs__techs-item {
     display: inline-block;
     width: 90px;
     height: 60px;
@@ -9,6 +9,6 @@
     line-height: 60px;
 }
 
-.tech__techs-item:last-child {
+.techs__techs-item:last-child {
     margin-right: 0;
 }

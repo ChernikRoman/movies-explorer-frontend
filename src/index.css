@@ -42,10 +42,26 @@
 @import url(./components/AboutProject/blocks/__track/aboutProject__track.css);
 
 /*Стили promo*/
-@import url(./components/Tech/blocks/tech.css);
-@import url(./components/Tech/blocks/__container/tech__container.css);
-@import url(./components/Tech/blocks/__title/tech__title.css);
-@import url(./components/Tech/blocks/__subtitle/tech__subtitle.css);
-@import url(./components/Tech/blocks/__text/tech__text.css);
-@import url(./components/Tech/blocks/__techs/tech__techs.css);
-@import url(./components/Tech/blocks/__techs-item/tech__techs-item.css);
+@import url(./components/Techs/blocks/techs.css);
+@import url(./components/Techs/blocks/__container/techs__container.css);
+@import url(./components/Techs/blocks/__title/techs__title.css);
+@import url(./components/Techs/blocks/__subtitle/techs__subtitle.css);
+@import url(./components/Techs/blocks/__text/techs__text.css);
+@import url(./components/Techs/blocks/__techs-list/techs__techs-list.css);
+@import url(./components/Techs/blocks/__techs-item/techs__techs-item.css);
+
+/*Стили AboutMe*/
+@import url(./components/AboutMe/blocks/about-me.css);
+@import url(./components/AboutMe/blocks/__container/about-me__container.css);
+@import url(./components/AboutMe/blocks/__title/about-me__title.css);
+@import url(./components/AboutMe/blocks/__student-name/about-me__student-name.css);
+@import url(./components/AboutMe/blocks/__description/about-me__description.css);
+@import url(./components/AboutMe/blocks/__text/about-me__text.css);
+@import url(./components/AboutMe/blocks/__link/about-me__link.css);
+@import url(./components/AboutMe/blocks/__photo/about-me__photo.css);
+
+/*Стили Portfolio*/
+@import url(./components/Portfolio/blocks/portfolio.css);
+@import url(./components/Portfolio/blocks/__container/portfolio__container.css);
+@import url(./components/Portfolio/blocks/__title/portfolio__title.css);
+@import url(./components/Portfolio/blocks/__link/portfolio__link.css);
