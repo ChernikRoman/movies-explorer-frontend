@@ -1,4 +1,6 @@
 .header__logo {
+    display: block;
+    margin: 0;
     width: 38px;
     height: 38px;
 }

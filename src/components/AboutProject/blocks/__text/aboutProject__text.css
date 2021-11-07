@@ -1,0 +1,10 @@
+.aboutProject__text {
+    display: inline-block;
+    margin: 70px 0 110px;
+    width: 50%;
+}
+
+.aboutProject__text span {
+    display: block;
+    height: 26px;
+}

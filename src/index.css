@@ -7,10 +7,14 @@
 /*Стили root*/
 .root {
     font-family: inter, sans-serif;
+    color: #ffffff
+    /* max-width: 1140px;
+    padding: 0 70px; */
 }
 
 /*Стили header*/
 @import url(./components/Header/blocks/header.css);
+@import url(./components/Header/blocks/__container/header__container.css);
 @import url(./components/Header/blocks/__auth/header__auth.css);
 @import url(./components/Header/blocks/__logo/header__logo.css);
 @import url(./components//Header//blocks/__signin-button/header__signin-button.css);
@@ -22,3 +26,26 @@
 @import url(./components/Footer/blocks/__links/footer__links.css);
 @import url(./components//Footer/blocks/__link/footer__link.css);
 
+/*Стили promo*/
+@import url(./components/Promo/blocks/promo.css);
+@import url(./components/Promo/blocks/__container/promo__container.css);
+@import url(./components/Promo/blocks/__description/promo__description.css);
+@import url(./components/Promo/blocks/__text/promo__text.css);
+@import url(./components/Promo/blocks/__read-more-button/promo__more-button.css);
+@import url(./components/Promo/blocks/__landing-logo/promo__landing-logo.css);
+
+/*Стили about project*/
+@import url(./components/AboutProject/blocks/aboutProject.css);
+@import url(./components/AboutProject/blocks/__container/aboutProject__container.css);
+@import url(./components/AboutProject/blocks/__title/aboutProject__title.css);
+@import url(./components/AboutProject/blocks/__text/aboutProject__text.css);
+@import url(./components/AboutProject/blocks/__track/aboutProject__track.css);
+
+/*Стили promo*/
+@import url(./components/Tech/blocks/tech.css);
+@import url(./components/Tech/blocks/__container/tech__container.css);
+@import url(./components/Tech/blocks/__title/tech__title.css);
+@import url(./components/Tech/blocks/__subtitle/tech__subtitle.css);
+@import url(./components/Tech/blocks/__text/tech__text.css);
+@import url(./components/Tech/blocks/__techs/tech__techs.css);
+@import url(./components/Tech/blocks/__techs-item/tech__techs-item.css);

@@ -1,6 +1,8 @@
 .header__signup-button {
-    margin-right: 30px;
-    color: #ffffff;
+    padding: 0;
     border: none;
-    background-color: #ffffff00
+    color: #ffffff;
+    background-color: #ffffff00;
+    /* vertical-align: middle; */
+    margin-right: 30px;
 }

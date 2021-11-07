@@ -1,0 +1,14 @@
+.tech__techs-item {
+    display: inline-block;
+    width: 90px;
+    height: 60px;
+    margin-right: 10px;
+    background-color: #303030;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 60px;
+}
+
+.tech__techs-item:last-child {
+    margin-right: 0;
+}
