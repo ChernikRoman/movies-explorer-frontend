@@ -8,3 +8,9 @@
     border-radius: 3px;
     background-color: #FFFFFF00;
 }
+
+@media (max-width: 1080px) {
+    .promo__read-more-button {
+        margin-top: 0;
+    }
+}

@@ -1,4 +1,6 @@
 .techs__techs-list {
-    width: 690px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     margin: 0 auto;
 }

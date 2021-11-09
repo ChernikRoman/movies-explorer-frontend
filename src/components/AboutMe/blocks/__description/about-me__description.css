@@ -4,3 +4,17 @@
     font-size: 18px;
     line-height: 20px;
 }
+
+@media (max-width: 1080) {
+    .about-me__description {
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 18px;
+    }
+}
+
+@media (max-width: 600px) {
+    .about-me__description {
+        margin: 20px 0;
+    }
+}

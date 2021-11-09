@@ -8,3 +8,17 @@
 .footer__link:first-of-type {
     margin-left: auto;
 }
+
+@media (max-width: 520px) {
+    .footer__link {
+        margin: 0 0 12px 0;
+    }
+
+    .footer__link:first-of-type {
+        margin-left: 0;
+    }
+
+    .footer__link:last-child {
+        margin-bottom: 30px;
+    }
+}

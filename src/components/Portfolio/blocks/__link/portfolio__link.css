@@ -14,3 +14,10 @@
     border-bottom: none;
 }
 
+@media (max-width: 520px) {
+    .portfolio__link {
+        font-size: 18px;
+        line-height: 28px;    
+        letter-spacing: -0.04em;
+    }
+}

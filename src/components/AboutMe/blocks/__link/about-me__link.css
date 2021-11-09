@@ -1,9 +1,26 @@
 .about-me__link {
-    display: inline-block;
-    margin: 99px 20px 0 0;
+    grid-row: 4/5;
+    grid-column: 1/2;
+    margin-top: 99px;
+}
+
+.about-me__link a {
+    color: #ffffff;
     text-decoration: none;
     color: #ffffff;
     font-weight: 500;
     font-size: 14px;
     line-height: 17px;
+}
+
+.about-me__link a:first-child {
+    margin-right: 20px;
+}
+
+@media (max-width: 600px) {
+    .about-me__link {
+        grid-row: 5/6;
+        margin-top: 40px;
+        text-align: left;
+    }
 }

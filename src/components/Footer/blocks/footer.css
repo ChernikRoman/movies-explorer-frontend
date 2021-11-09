@@ -6,3 +6,9 @@
     background-color: #202020;
     text-align: center;
 }
+
+@media (max-width: 520px) {
+    .footer {
+        padding: 79px 10px 0;
+    }
+}

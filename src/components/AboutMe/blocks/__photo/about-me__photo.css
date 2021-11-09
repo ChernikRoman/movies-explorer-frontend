@@ -1,9 +1,30 @@
 .about-me__photo {
-    position: absolute;
-    width: 270px;
+    grid-row: 1/5;
+    grid-column: 2/3;
     height: 327px;
-    top: 66px;
-    right: 0;
     background-color: #0400ff7a;
     border-radius: 10px;
+}
+
+@media (max-width: 1080px) {
+    .about-me__photo {
+        height: 307px;
+    }
+}
+
+@media (max-width: 600px) {
+    .about-me__photo {
+        width: 292px;
+        height: 352px;
+        grid-row: 1/2;
+        grid-column: 1/2;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 434px) {
+    .about-me__photo {
+        max-width: 292px;
+        width: 91.25vw;
+    }
 }

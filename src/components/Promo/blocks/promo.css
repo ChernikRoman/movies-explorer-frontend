@@ -2,3 +2,15 @@
     padding: 75px 70px;
     background-color: #073042;
 }
+
+@media (max-width: 1080px) {
+    .promo {
+        padding: 140px 44px 67px
+    }
+}
+
+@media (max-width: 520px) {
+    .promo {
+        padding: 70px 10px 30px
+    }
+}

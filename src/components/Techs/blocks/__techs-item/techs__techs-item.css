@@ -12,3 +12,11 @@
 .techs__techs-item:last-child {
     margin-right: 0;
 }
+
+@media (max-width: 1080px) {
+    .techs__techs-item {
+        width: 84px;
+        height: 57px;
+        margin-top: 10px;
+    }
+}

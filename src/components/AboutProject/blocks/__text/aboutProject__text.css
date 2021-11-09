@@ -1,10 +1,11 @@
 .aboutProject__text {
-    display: inline-block;
-    margin: 70px 0 110px;
-    width: 50%;
+    font-size: 14px;
+    line-height: 20px;
 }
 
-.aboutProject__text span {
-    display: block;
-    height: 26px;
+@media (max-width: 520px) {
+    .aboutProject__text {
+        font-size: 11px;
+        line-height: 16px;
+    }
 }

@@ -3,3 +3,9 @@
     max-width: 1140px;
     margin: 0 auto;
 }
+
+@media (max-width: 520px) {
+    .aboutProject__container div:nth-child(3) {
+        margin: 0 0 60px;
+    }
+}

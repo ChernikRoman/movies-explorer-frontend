@@ -1,6 +1,26 @@
 .promo__description {
     max-width: 640px;
-    height: 174px;
     font-size: 50px;
     line-height: 58px;
+}
+
+@media (max-width: 1080px) {
+    .promo__description {
+        max-width: 680px;
+        font-size: 40px;
+        line-height: 50px;
+        margin: 48px 0 22px;
+    }
+}
+
+@media (max-width: 520px) {
+    .promo__description {
+        /* max-width: 680px;
+        font-size: 40px;
+        line-height: 50px; */
+        font-size: 30px;
+        line-height: 38px;
+        letter-spacing: -0.04em;
+        margin: 44px 0 24px;
+    }
 }
