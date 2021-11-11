@@ -6,10 +6,12 @@ import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import img from '../../images/moviesCard/movie_pic.png'
 import MoviesCard from '../MoviesCard/MoviesCard';
+import Register from '../Register/Register';
 
 function App() {
   return (
     <>
+      <Register />
       {/* <Header />
       <Main />
       <SearchForm />

@@ -91,3 +91,11 @@
 @import url(./components/MoviesCard/blocks/__movie-duration/moviesCard__movie-duration.css);
 @import url(./components/MoviesCard/blocks/__like-button/moviesCard__like-button.css);
 
+/*Стили Register*/
+@import url(./components/Register/blocks/register.css);
+@import url(./components/Register/blocks/__container/register__container.css);
+@import url(./components/Register/blocks/__register-logo/register__register-logo.css);
+@import url(./components/Register/blocks/__title/register__title.css);
+@import url(./components/Register/blocks/__form/register__form.css);
+@import url(./components/Register/blocks/__input/register__input.css);
+@import url(./components/Register/blocks/__submit-button/register__submit-button.css);
