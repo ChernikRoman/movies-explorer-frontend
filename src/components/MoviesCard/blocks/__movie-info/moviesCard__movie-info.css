@@ -1,0 +1,14 @@
+.moviesCard__movie-info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 16px;
+}
+
+@media (max-width: 580px) {
+    .moviesCard__movie-info {
+        position: relative;
+        width: 100%;
+        align-self: flex-start;
+        margin: 14px 6px 8px;
+    }
+}

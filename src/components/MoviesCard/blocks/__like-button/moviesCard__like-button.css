@@ -1,0 +1,12 @@
+.moviesCard__like-button {
+    width: 14px;
+    height: 12px;
+}
+
+@media (max-width: 580px) {
+    .moviesCard__like-button {
+        position: absolute;
+        top: 0;
+        right: 10px;
+    }
+}

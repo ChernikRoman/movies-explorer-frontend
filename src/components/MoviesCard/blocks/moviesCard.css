@@ -1,0 +1,14 @@
+.moviesCard {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px;
+    /* height: 134px; */
+    background-color: #2F2F2F;
+}
+
+@media (max-width: 580px) {
+    .moviesCard {
+        flex-direction: column-reverse;
+    }
+}

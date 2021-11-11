@@ -1,0 +1,19 @@
+.searchForm__container {
+    position: relative;
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: auto 226px;
+    align-items: center;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 17px 20px 88px;
+    border-bottom: 1px solid #424242;
+}
+
+@media (max-width: 580px) {
+    .searchForm__container{
+        grid-template-rows: auto auto;
+        padding: 17px 10px 88px;
+        row-gap: 46px;
+    }
+}

@@ -1,0 +1,36 @@
+.searchForm__shortFilm-tumbler {
+    display: flex;
+    grid-row: 1/2;
+    grid-column: 2/3;
+    font-size: 13px;
+    line-height: 18px;
+}
+
+.searchForm__shortFilm-tumbler:before {
+    content: '';
+    display: block;
+    margin: auto 0;
+    background-image: url(/src/images/searchForm/smalltumb.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 36px;
+    height: 20px;
+    margin: 0 14px 0 29px;
+}
+
+.searchForm__shortFilm-tumbler input {
+    position: absolute;
+    z-index: -1;
+}
+
+.searchForm__shortFilm-tumbler input:checked + .searchForm__shortFilm-tumbler:before {
+    background-color: blue;
+}
+
+@media (max-width: 580px) {
+    .searchForm__shortFilm-tumbler {
+        grid-row: 2/3;
+        grid-column: 1/-1;
+        justify-content: center;
+    }
+}
