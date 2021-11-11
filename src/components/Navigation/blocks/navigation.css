@@ -1,0 +1,30 @@
+.navigation {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 0;
+    right: -520px;
+    width: 100%;
+    height: 100vh;
+    padding: 159px 0 90px;
+    max-width: 520px;
+    background-color: #202020;
+    transition: right .5s;
+    box-sizing: border-box;
+}
+
+.navigation span {
+    margin-top: 28px;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+}
+
+.navigation span:first-child {
+    margin-top: 0;
+}
+
+.navigation a {
+    margin-top: auto;
+}

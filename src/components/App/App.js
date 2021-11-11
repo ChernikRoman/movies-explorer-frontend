@@ -10,6 +10,7 @@ import Register from '../Register/Register';
 import Login from '../Login/Login';
 import Page404 from '../Page404/Page404';
 import Preloader from '../Preloader/Preloader'
+import Navigation from '../Navigation/Navigation';
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
@@ -17,6 +18,7 @@ function App() {
   return (
     <>
       <Header />
+      <Navigation isOpen={false}/>
       <Routes>
         <Route path="/" element={<Main />}/>
         <Route path="movies" element={<MoviesCardList />}/>

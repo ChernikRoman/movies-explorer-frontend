@@ -1,6 +1,7 @@
-.header__menu-button {
+.navigation__link {
     display: flex;
     color: #ffffff;
+    text-decoration: none;
     align-items: center;
     font-size: 13px;
     line-height: 26px;

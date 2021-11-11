@@ -7,9 +7,10 @@
 /*Стили root*/
 .root {
     font-family: inter, sans-serif;
-    color: #ffffff
-    /* max-width: 1140px;
-    padding: 0 70px; */
+    color: #ffffff;
+    /* width: 100vw; */
+    position: relative;
+    overflow: hidden; /*Скрывает Navigation*/
 }
 
 /*Стили header*/
@@ -117,3 +118,9 @@
 @import url(./components/Page404/blocks/__error-code/page404__error-code.css);
 @import url(./components/Page404/blocks/__description/page404__description.css);
 @import url(./components/Page404/blocks/__back-link/page404__back-link.css);
+
+/*Стили Navigation*/
+@import url(./components/Navigation/blocks/navigation.css);
+@import url(./components/Navigation/blocks//__link/navigation__link.css);
+@import url(./components/Navigation/blocks/__menu-logo/navigation__menu-logo.css);
+@import url(./components/Navigation/blocks/__close-button/navigation__close-button.css);
