@@ -7,12 +7,14 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import img from '../../images/moviesCard/movie_pic.png'
 import MoviesCard from '../MoviesCard/MoviesCard';
 import Register from '../Register/Register';
+import Login from '../Login/Login';
 
 function App() {
   return (
     <>
-      <Register />
-      {/* <Header />
+    <Login/>
+      {/* <Register />
+      <Header />
       <Main />
       <SearchForm />
       <MoviesCardList>

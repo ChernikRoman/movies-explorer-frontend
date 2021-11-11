@@ -2,7 +2,7 @@ import logo from '../../images/header/header_logo.png'
 
 export default function Register(props) {
     return (
-        <section className="register" style={{backgroundColor: '#222'}}>
+        <section className="register">
             <div className="register__container">
                 <img className="register__register-logo" src={logo} alt="Register logo" />
                 <h2 className="register__title">Добро пожаловать!</h2>

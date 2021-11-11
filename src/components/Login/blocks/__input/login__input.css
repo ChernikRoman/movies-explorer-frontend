@@ -1,0 +1,21 @@
+.login__input {
+    margin-bottom: 24px;
+    font-size: 10px;
+    line-height: 12px;
+    color: #8B8B8B;
+}
+
+.login__input input {
+    width: 100%;
+    padding: 5px 0 10px;
+    color: #ffffff;
+    border: none;
+    border-bottom: 1px solid #424242;
+    background-color: #222222;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.login__input span {
+    opacity: 0;
+}
