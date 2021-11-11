@@ -17,8 +17,11 @@
 @import url(./components/Header/blocks/__container/header__container.css);
 @import url(./components/Header/blocks/__auth/header__auth.css);
 @import url(./components/Header/blocks/__logo/header__logo.css);
-@import url(./components//Header//blocks/__signin-button/header__signin-button.css);
-@import url(./components//Header//blocks/__signup-button/header__signup-button.css);
+@import url(./components/Header/blocks/__signin-button/header__signin-button.css);
+@import url(./components/Header/blocks/__signup-button/header__signup-button.css);
+@import url(./components/Header/blocks/__menu-button/header__menu-button.css);
+@import url(./components/Header/blocks/__menu-logo/header__menu-logo.css);
+@import url(./components/Header/blocks/__nav-links/header__nav-links.css);
 
 /*Стили footer*/
 @import url(./components/Footer/blocks/footer.css);

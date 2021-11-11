@@ -9,20 +9,19 @@ import MoviesCard from '../MoviesCard/MoviesCard';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
 import Page404 from '../Page404/Page404';
+import Preloader from '../Preloader/Preloader'
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
     <>
-    <Page404 />
-    {/* <Login/> */}
-      {/* <Register />
       <Header />
-      <Main />
-      <SearchForm />
-      <MoviesCardList>
-        <MoviesCard name="Name movie" img={img} duration="01:17"/>
-      </MoviesCardList>
-      <Footer /> */}
+      <Routes>
+        <Route path="/" element={<Main />}/>
+        <Route path="movies" element={<MoviesCardList />}/>
+      </Routes>
+      <Footer /> 
     </>
   );
 }
