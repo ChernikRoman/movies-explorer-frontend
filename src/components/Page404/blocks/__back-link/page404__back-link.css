@@ -1,0 +1,13 @@
+.page404__back-link {
+    font-size: 14px;
+    line-height: 17px;
+    margin-bottom: 60px;
+}
+
+@media (max-width: 520px) {
+    .page404__back-link {
+        font-size: 12px;
+        line-height: 15px;
+        margin-bottom: 30px;
+    }
+}

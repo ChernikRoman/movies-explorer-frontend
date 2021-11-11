@@ -8,11 +8,13 @@ import img from '../../images/moviesCard/movie_pic.png'
 import MoviesCard from '../MoviesCard/MoviesCard';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
+import Page404 from '../Page404/Page404';
 
 function App() {
   return (
     <>
-    <Login/>
+    <Page404 />
+    {/* <Login/> */}
       {/* <Register />
       <Header />
       <Main />

@@ -1,0 +1,13 @@
+.page404__error-code {
+    margin: 246px 0 0;
+    font-size: 140px;
+    line-height: 169px;
+}
+
+@media (max-width: 520px) {
+    .page404__error-code {
+        margin: 329px 0 0;
+        font-size: 80px;
+        line-height: 97px;
+    }
+}
