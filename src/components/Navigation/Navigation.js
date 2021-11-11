@@ -11,10 +11,10 @@ export default function Navigation(props) {
 
     return (
         <div className="navigation">
-            <span>Главная</span>
-            <span>Фильмы</span>
-            <span>Сохраненные фильмы</span>
-            <Link className="navigation__link" to='/'>
+            <Link to="/">Главная</Link>
+            <Link to="/movies">Фильмы</Link>
+            <Link to="/saved-movies">Сохраненные фильмы</Link>
+            <Link to='/profile'>
                     Аккаунт
                     <img className="navigation__menu-logo" src={linkButton} alt="Menu logo"/>
             </Link>

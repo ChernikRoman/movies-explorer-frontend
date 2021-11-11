@@ -2,17 +2,14 @@ import './App.css';
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 import Main from '../Main/Main'
-import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
-import img from '../../images/moviesCard/movie_pic.png'
-import MoviesCard from '../MoviesCard/MoviesCard';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
 import Page404 from '../Page404/Page404';
-import Preloader from '../Preloader/Preloader'
 import Navigation from '../Navigation/Navigation';
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import Profile from '../Profile/Profile';
 
 function App() {
   return (
@@ -22,6 +19,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />}/>
         <Route path="movies" element={<MoviesCardList />}/>
+        <Route path="saved-movies" element={<MoviesCardList />}/>
+        <Route path="profile" element={<Profile />}/>
+        <Route path="signin" element={<Login />}/>
+        <Route path="singup" element={<Register />}/>
+        <Route path="*" element={<Page404 />}/>
       </Routes>
       <Footer /> 
     </>

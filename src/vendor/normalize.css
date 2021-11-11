@@ -28,6 +28,10 @@ p {
   margin: 0;
 }
 
+a:hover {
+  opacity: .5;
+}
+
 /**
  * Render the `main` element consistently in IE.
  */

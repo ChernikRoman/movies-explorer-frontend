@@ -20,8 +20,8 @@
 @import url(./components/Header/blocks/__logo/header__logo.css);
 @import url(./components/Header/blocks/__signin-button/header__signin-button.css);
 @import url(./components/Header/blocks/__signup-button/header__signup-button.css);
-@import url(./components/Header/blocks/__menu-button/header__menu-button.css);
-@import url(./components/Header/blocks/__menu-logo/header__menu-logo.css);
+@import url(./components/Header/blocks/__link-button/header__link-button.css);
+@import url(./components/Header/blocks/__link-logo/header__link-logo.css);
 @import url(./components/Header/blocks/__nav-links/header__nav-links.css);
 
 /*Стили footer*/
@@ -112,6 +112,15 @@
 @import url(./components/Login/blocks/__form/login__form.css);
 @import url(./components/Login/blocks/__input/login__input.css);
 @import url(./components/Login/blocks/__submit-button/login__submit-button.css);
+
+/*Стили Profile*/
+@import url(./components/Profile/blocks/profile.css);
+@import url(./components/Profile/blocks/__container/profile__container.css);
+@import url(./components/Profile/blocks/__profile-logo/profile__profile-logo.css);
+@import url(./components/Profile/blocks/__title/profile__title.css);
+@import url(./components/Profile/blocks/__form/profile__form.css);
+@import url(./components/Profile/blocks/__input/profile__input.css);
+@import url(./components/Profile/blocks/__submit-button/profile__submit-button.css);
 
 /*Стили Page404*/
 @import url(./components/Page404/blocks/page404.css);

@@ -1,0 +1,5 @@
+@media (max-width: 456px) {
+    .profile__profile-logo {
+        align-self: center;
+    }
+}

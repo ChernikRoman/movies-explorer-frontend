@@ -4,7 +4,7 @@ export default function Login(props) {
     return (
         <section className="login">
             <div className="login__container">
-                <img className="login__login-logo" src={logo} alt="Register logo" />
+                <img className="login__login-logo" src={logo} alt="Login logo" />
                 <h2 className="login__title">Рады видеть!</h2>
                 <form className="login__form">
                     <label className="login__input">

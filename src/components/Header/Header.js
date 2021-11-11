@@ -39,16 +39,16 @@ export default function Header (props) {
                     :
                     <>
                     <div className="header__nav-links">
-                        <Link to="/q">Фильмы</Link>
-                        <Link to="/q">Сохраненные фильмы</Link>
+                        <Link to="/movies">Фильмы</Link>
+                        <Link to="/saved-movies">Сохраненные фильмы</Link>
                     </div>
 
                     {/* Выбирам кнопку в зависимоти от ширины экрана */}
                     {document.documentElement.clientWidth > 850
-                    ?<label className="header__menu-button" onClick={menuButtonClickHandler}>
+                    ?<Link className="header__link-button" to="profile">
                         Аккаунт
-                        <img className="header__menu-logo" src={linkButton} alt="Menu logo"/>
-                    </label>
+                        <img className="header__link-logo" src={linkButton} alt="Menu logo"/>
+                    </Link>
                     :<img src={menuButton} alt="Menu button" onClick={menuButtonClickHandler}/>
                     }
                     </>

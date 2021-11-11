@@ -1,0 +1,22 @@
+.profile__input {
+    display: flex;
+    margin-bottom: 24px;
+    font-size: 10px;
+    line-height: 33px;
+    color: #ffffff;
+    border-bottom: 1px solid #424242;
+    text-align: right;
+}
+
+.profile__input input {
+    display: inline-block;
+    /* flex-grow: 1; */
+    margin-left: auto;
+    width: auto;
+    padding: 5px 0 10px;
+    color: #ffffff;
+    border: none;
+    background-color: #222222;
+    font-size: 14px;
+    line-height: 17px;
+}

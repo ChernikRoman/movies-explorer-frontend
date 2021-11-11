@@ -12,19 +12,28 @@
     background-color: #202020;
     transition: right .5s;
     box-sizing: border-box;
+    z-index: 1;
 }
 
-.navigation span {
+.navigation a {
     margin-top: 28px;
     font-weight: 500;
     font-size: 18px;
     line-height: 22px;
+    color: #ffffff;
+    text-decoration: none;
 }
 
-.navigation span:first-child {
+.navigation a:first-child {
     margin-top: 0;
 }
 
-.navigation a {
+.navigation a:last-of-type {
     margin-top: auto;
+    display: flex;
+    color: #ffffff;
+    text-decoration: none;
+    align-items: center;
+    font-size: 13px;
+    line-height: 26px;
 }
