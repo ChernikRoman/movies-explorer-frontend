@@ -1,6 +1,10 @@
 .header__signin-button {
     width: 76px;
     height: 32px;
+    text-decoration: none;
+    line-height: 32px;;
+    text-align: center;
+    color: #000000;
     background-color: #3DDC84;
     border-radius: 3px;
     border: none;

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import cross from "../../images/navigation/cross.png";
-import linkButton from '../../images/header/link_button.png'
+import cross from "../../images/navigation/cross.svg";
+import linkButton from '../../images/header/link_button.svg'
 
 export default function Navigation(props) {
     function closeButtonHndler() {

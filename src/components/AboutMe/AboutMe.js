@@ -1,3 +1,5 @@
+import studentPhoto from '../../images/aboutMe/student-photo.jpeg'
+
 export default function AboutMe() {
     return (
         <section className="about-me">
@@ -14,7 +16,7 @@ export default function AboutMe() {
                     <a href="http://facebook.com">Facebook</a>
                     <a href="https://github.com/Rmn17">GitHub</a>
                 </div>
-                <img className="about-me__photo" src="" alt="Student photography" />
+                <img className="about-me__photo" src={studentPhoto} alt="Student photography" />
             </div>
         </section>
     )

@@ -1,4 +1,5 @@
-import logo from '../../images/header/header_logo.png'
+import { Link } from 'react-router-dom';
+import logo from '../../images/header/header_logo.svg'
 
 export default function Register(props) {
     return (
@@ -23,7 +24,7 @@ export default function Register(props) {
                         <span>Что-то пошло не так...</span>
                     </label>
                     <input className="register__submit-button" type="submit"></input>
-                    <span>Уже зарегистрированы? Войти</span>
+                    <span>Уже зарегистрированы? <Link to="/signin">Войти</Link> </span>
                 </form>
             </div>
         </section>

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import landingLogo from '../../images/promo/promo_landing-logo.png'
+import landingLogo from '../../images/promo/promo_landing-logo.svg'
 
 export default function Promo() {
     return (

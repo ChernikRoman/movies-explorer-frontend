@@ -93,7 +93,7 @@
 @import url(./components/MoviesCard/blocks/__movie-info/moviesCard__movie-info.css);
 @import url(./components/MoviesCard/blocks/__movie-name/moviesCard__movie-name.css);
 @import url(./components/MoviesCard/blocks/__movie-duration/moviesCard__movie-duration.css);
-@import url(./components/MoviesCard/blocks/__like-button/moviesCard__like-button.css);
+@import url(./components/MoviesCard/blocks/__status-button/moviesCard__status-button.css);
 
 /*Стили Register*/
 @import url(./components/Register/blocks/register.css);
