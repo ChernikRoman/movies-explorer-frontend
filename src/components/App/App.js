@@ -8,15 +8,18 @@ import Navigation from '../Navigation/Navigation';
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Profile from '../Profile/Profile';
+import mainApi from '../../utils/MainApi';
 
 function App() {
+  const [movies, setMovies] = React.useState([]);
+
   return (
     <>
       <Navigation isOpen={false}/>
       <Routes>
         <Route path="/" element={<Main />}/>
-        <Route path="movies" element={<MoviesCardList />}/>
-        <Route path="saved-movies" element={<MoviesCardList />}/>
+        <Route path="movies" element={<MoviesCardList  />}/>
+        <Route path="saved-movies" element={<MoviesCardList  />}/>
         <Route path="profile" element={<Profile />}/>
         <Route path="signin" element={<Login />}/>
         <Route path="signup" element={<Register />}/>
