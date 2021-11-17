@@ -9,12 +9,15 @@ import Preloader from "../Preloader/Preloader"
 export default function MoviesCardList(props) {
     const [moviesList, setMoviesList] = useState([]);
     const [numberOfCards, setNumberOfCards] = useState(95);
+    const [preloaderIsOpen, setPreloaderIsOpen] = useState(false);
 
 
     function submitSearchForm(evt) {
         evt.preventDefault();
+        setPreloaderIsOpen(true)
         moviesApi.getMovies()
             .then(res => {
+                setPreloaderIsOpen(false)
                 setMoviesList(res)
             })
     }
@@ -32,6 +35,7 @@ export default function MoviesCardList(props) {
             <Header />
             <SearchForm onSubmitSearchForm={submitSearchForm} />
             <section className="moviesCardList">
+                <Preloader isOpen={preloaderIsOpen}/>
                 <div className="moviesCardList__container">
                     <RenderedCards cards={moviesList} numberOfCards={numberOfCards}/>
                 </div>
