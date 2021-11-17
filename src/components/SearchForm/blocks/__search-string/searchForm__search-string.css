@@ -1,0 +1,7 @@
+.searchForm__search-string {
+    width: 150px;
+    flex-grow: 1;
+    color: #8B8B8B;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+}

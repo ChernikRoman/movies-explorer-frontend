@@ -1,0 +1,17 @@
+.moviesCardList__container {
+    margin: 0 auto;
+    max-width: 1140px;
+    padding: 0 70px;
+}
+
+@media (max-width: 1080px) {
+    .moviesCardList__container {
+        padding: 60px 30px;
+    }
+}
+
+@media (max-width: 580px) {
+    .moviesCardList__container {
+        padding: 40px 10px;
+    }
+}

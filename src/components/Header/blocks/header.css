@@ -1,0 +1,16 @@
+.header {
+    padding: 18px 70px;
+    /* background-color: ; */
+}
+
+@media (max-width: 1080px) {
+    .header {
+        padding: 18px 30px;
+    }
+}
+
+@media (max-width: 520px) {
+    .header {
+        padding: 18px 14px;
+    }
+}

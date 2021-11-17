@@ -1,0 +1,12 @@
+.moviesCard__status-button {
+    width: 14px;
+    height: 12px;
+}
+
+@media (max-width: 580px) {
+    .moviesCard__status-button {
+        position: absolute;
+        top: 0;
+        right: 10px;
+    }
+}

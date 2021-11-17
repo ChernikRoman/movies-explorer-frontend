@@ -1,0 +1,16 @@
+.techs {
+    padding: 100px 70px;
+    background-color: #272727;
+}
+
+@media (max-width: 1080px) {
+    .techs {
+        padding: 90px 50px;
+    }
+}
+
+@media (max-width: 520px) {
+    .techs {
+        padding: 70px 18px;
+    }
+}

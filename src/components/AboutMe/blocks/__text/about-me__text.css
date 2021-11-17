@@ -1,0 +1,21 @@
+.about-me__text {
+    max-width: 600px;
+    font-size: 14px;
+    line-height: 22px;
+}
+
+@media (max-width: 1080px) {
+    .about-me__text {
+        width: 47.4vw;
+        font-size: 12px;
+        line-height: 18px;
+    }
+}
+
+@media (max-width: 600px) {
+    .about-me__text {
+        width: 100%;
+        grid-row: 4/5;
+        grid-column: 1/2;
+    }
+}

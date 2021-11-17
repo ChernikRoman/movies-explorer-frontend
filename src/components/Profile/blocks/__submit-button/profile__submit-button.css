@@ -1,0 +1,13 @@
+.profile__submit-button {
+    height: 45px;
+    margin: 210px 0 16px;
+    color: #ffffff;
+    border: none;
+    background-color: transparent;
+}
+
+@media (max-width: 456px) {
+    .profile__submit-button {
+        margin: 309px 0 16px;
+    }
+}

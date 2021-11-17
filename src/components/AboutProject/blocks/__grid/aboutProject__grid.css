@@ -1,0 +1,23 @@
+.aboutProject__grid {
+    display: inline-grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    row-gap: 26px;
+    width: 50%;
+    margin: 70px 0 110px;
+}
+
+@media (max-width: 1080px) {
+    .aboutProject__grid {
+        grid-template-columns: auto;
+        margin-bottom: 93px;
+    }
+}
+
+@media (max-width: 520px) {
+    .aboutProject__grid {
+        display: grid;
+        width: 100%;
+        margin-top: 60px;
+    }
+}

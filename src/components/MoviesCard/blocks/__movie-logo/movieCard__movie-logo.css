@@ -1,0 +1,11 @@
+.movieCard__movie-logo {
+    width: 220px;
+    height: 122px;
+}
+
+@media (max-width: 580px) {
+    .movieCard__movie-logo {
+        width: 100%;
+        height: 100%;
+    }
+}

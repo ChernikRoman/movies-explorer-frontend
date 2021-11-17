@@ -1,0 +1,18 @@
+.promo__landing-logo {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+@media (max-width: 1080px) {
+    .promo__landing-logo {
+        position: static;
+        width: 310px;
+    }
+}
+
+@media (max-width: 520px) {
+    .promo__landing-logo {
+        width: 210px;
+    }
+}

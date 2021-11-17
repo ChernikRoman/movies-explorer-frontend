@@ -1,0 +1,13 @@
+.register__submit-button {
+    height: 45px;
+    margin: 134px 0 16px;
+    color: #ffffff;
+    border: none;
+    background-color: #4285F4;
+}
+
+@media (max-width: 456px) {
+    .register__submit-button {
+        margin: 222px 0 16px;
+    }
+}

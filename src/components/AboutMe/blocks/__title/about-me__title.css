@@ -1,0 +1,10 @@
+.about-me__title {
+    margin: 0 auto 66px;
+    max-width: 1140px;
+    font-weight: normal;
+    font-size: 22px;
+    line-height: 27px;
+    letter-spacing: -0.04em;
+    padding-bottom: 23px;
+    border-bottom: 1px solid #dadada;
+}

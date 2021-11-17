@@ -1,0 +1,23 @@
+.header__nav-links {
+    display: flex;
+    align-items: center;
+}
+
+.header__nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 18px;
+    margin-left: 16px;
+}
+
+.header__nav-links a:first-child {
+    margin-left: 0;
+}
+
+@media (max-width: 850px) {
+    .header__nav-links {
+        display: none;
+    }
+}

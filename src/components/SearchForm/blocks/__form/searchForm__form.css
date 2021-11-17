@@ -1,0 +1,15 @@
+.searchForm__form {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    display: flex;
+    flex-grow: 1;
+    padding-right: 19px;
+    border-right: 1px solid#505050;
+}
+
+@media (max-width: 580px) {
+    .searchForm__form {
+        grid-column: 1/-1;
+        padding-right: 0;
+    }
+}

@@ -1,0 +1,12 @@
+.moviesCard__movie-duration {
+    margin: 13px 0 30px;
+    color: #8B8B8B;
+    font-size: 11px;
+    line-height: 13px;
+}
+
+@media (max-width: 580px) {
+    .moviesCard__movie-duration {
+        margin-bottom: 0;
+    }
+}

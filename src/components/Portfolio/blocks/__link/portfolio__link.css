@@ -1,0 +1,23 @@
+.portfolio__link {
+    display: flex;
+    padding: 20px 0;
+    border-bottom: 1px solid #424242;
+    font-size: 30px;
+    line-height: 50px;
+    letter-spacing: -0.04em;
+    justify-content: space-between;
+    color: #E5E5E5;
+    text-decoration: none;
+}
+ 
+.portfolio__link:last-child {
+    border-bottom: none;
+}
+
+@media (max-width: 520px) {
+    .portfolio__link {
+        font-size: 18px;
+        line-height: 28px;    
+        letter-spacing: -0.04em;
+    }
+}

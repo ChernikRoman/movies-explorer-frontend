@@ -1,0 +1,17 @@
+.promo__read-more-button {
+    width: 129px;
+    text-decoration: none;
+    line-height: 36px;
+    margin-top: 146px;
+    color: #FFFFFF;
+    opacity: 0.6;
+    border: 1px solid #FFFFFF;
+    border-radius: 3px;
+    background-color: #FFFFFF00;
+}
+
+@media (max-width: 1080px) {
+    .promo__read-more-button {
+        margin-top: 0;
+    }
+}
