@@ -16,10 +16,6 @@ export default function MoviesCardList(props) {
     const [showError, setShowError] =useState(false)
     const [errorMessage, setErrorMessage] = useState('');
 
-    let curuse = useContext(CurrentUserContext)
-
-    curuse = 'awdawdaw'
-
     function submitSearchForm(evt) {
         evt.preventDefault();
         const searchingString = evt.target.querySelector('input').value;
@@ -46,7 +42,7 @@ export default function MoviesCardList(props) {
     }
 
     useEffect(()=>{
-        console.log(curuse)
+        console.log()
     })
 
     return (

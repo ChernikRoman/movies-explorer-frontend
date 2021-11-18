@@ -1,7 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { useNavigate } from 'react-router-dom'
 import validator from 'validator'
 import Header from '../Header/Header';
 import mainApi from '../../utils/MainApi'
+import CurrentUserContext from '../../context/CurrentUserContext';
 
 export default function Profile(props) {
     const [isValidForm, setIsValidForm] = useState(false)
@@ -9,6 +11,9 @@ export default function Profile(props) {
     const [isValidEmail, setIsValidEmail] = useState(false)
     const [inputName, setInputName] = useState('')
     const [inputEmail, setInputEmail] = useState('')
+
+    const currentUser = useContext(CurrentUserContext)
+    const navigation = useNavigate()
 
     function handleChangeForm(evt) {
         if(evt.target.name === 'profile-input-name') {
@@ -23,12 +28,20 @@ export default function Profile(props) {
 
     function handleSubmitForm(evt) {
         evt.preventDefault()
-        mainApi.createUser({
+        mainApi.patchMyUserData({
             name: inputName,
             email: inputEmail,
         })
             .then(res => {
+                props.updateCurrentUser(res)
+            })
+    }
+
+    function handleSignOut() {
+        mainApi.logout()
+            .then((res)=>{
                 console.log(res)
+                navigation('/')
             })
     }
 
@@ -45,20 +58,23 @@ export default function Profile(props) {
             <Header />
             <section className="profile">
                 <div className="profile__container">
-                    <h2 className="profile__title">Привет, {props.userName}!</h2>
+                    <h2 className="profile__title">Привет, {currentUser.name}!</h2>
                     <form className="profile__form" onChange={handleChangeForm} onSubmit={handleSubmitForm}>
                         <label className="profile__input">
                             Имя
-                            <input name="profile-input-name" placeholder={props.userName}></input>
+                            <input name="profile-input-name" placeholder={currentUser.name} required></input>
                             {inputName && !isValidName && <span>Заполните имя</span>}
                         </label>
                         <label className="profile__input">
                             E-mail
-                            <input name="profile-input-email" type="email" placeholder={props.userEmail}></input>
+                            <input name="profile-input-email" type="email" placeholder={currentUser.email} required></input>
                             {inputEmail && !isValidEmail && <span>Введите корректный email</span>}
                         </label>
-                        <input className="profile__submit-button" type="button" value="Редактировать"></input>
-                        <span>Выйти из аккаунта</span>
+                        {isValidForm
+                            ?<input className="profile__submit-button" type="submit" value="Редактировать"></input>
+                            :<input className="profile__submit-button" type="submit" value="Редактировать" disabled></input>
+                        }
+                        <span onClick={handleSignOut}>Выйти из аккаунта</span>
                     </form>
                 </div>
             </section>

@@ -30,7 +30,7 @@ export default function Login(props) {
             password: inputPassword,
         })
             .then(res => {
-                console.log(res)
+                props.updateCurrentUser(res)
                 navigation('/movies')
             })
     }

@@ -21,7 +21,7 @@ class MainApi {
     }
 
     patchMyUserData(data) {
-        return fetch(`${this.baseURL}/me`, {
+        return fetch(`${this.baseURL}/users/me`, {
             method: 'PATCH',
             headers: this.headers,
             credentials: 'include',
@@ -95,6 +95,7 @@ class MainApi {
                 password: data.password,
             })
         })
+        .then(this._checkResponse)
     }
 
     logout() {
@@ -102,6 +103,7 @@ class MainApi {
             method: 'GET',
             headers: this.headers,
         })
+        .then(this._checkResponse)
     }
 }
 

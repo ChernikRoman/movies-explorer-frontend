@@ -34,10 +34,14 @@ export default function Register(props) {
         mainApi.createUser({
             name: inputName,
             email: inputEmail,
-            password: inputPassword,
+            password: inputPassword
         })
-            .then(res => {
-                navigation('/signin')
+            .then(() => {
+                mainApi.login({ email: inputEmail, password: inputPassword })
+                .then((data) => {
+                    props.updateCurrentUser(data)
+                    navigation('/movies')
+                })
             })
     }
 
