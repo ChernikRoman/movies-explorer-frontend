@@ -103,6 +103,7 @@
 @import url(./components/Register/blocks/__form/register__form.css);
 @import url(./components/Register/blocks/__input/register__input.css);
 @import url(./components/Register/blocks/__submit-button/register__submit-button.css);
+@import url(./components/Register/blocks/__submit-button/_disabled/register__submit-button_disabled.css);
 
 /*Стили Login*/
 @import url(./components/Login/blocks/login.css);
