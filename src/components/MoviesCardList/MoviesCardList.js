@@ -5,26 +5,37 @@ import Footer from '../Footer/Footer'
 import moviesApi from "../../utils/MoviesApi"
 import RenderedCards from "../RenderedCards/RenderedCards"
 import Preloader from "../Preloader/Preloader"
+import ErrorPopup from "../ErrorPopup/ErrorPopup"
 
 export default function MoviesCardList(props) {
     const [moviesList, setMoviesList] = useState([]);
-    const [numberOfCards, setNumberOfCards] = useState(95);
+    const [numberOfCards, setNumberOfCards] = useState(7);
     const [preloaderIsOpen, setPreloaderIsOpen] = useState(false);
+    const [keyWords, setKeyWords] = useState('');
+    const [showError, setShowError] =useState(false)
+    const [errorMessage, setErrorMessage] = useState('');
 
 
     function submitSearchForm(evt) {
         evt.preventDefault();
-        setPreloaderIsOpen(true)
-        moviesApi.getMovies()
-            .then(res => {
-                setPreloaderIsOpen(false)
-                setMoviesList(res)
-            })
+        const searchingString = evt.target.querySelector('input').value;
+        if (searchingString) {
+            setPreloaderIsOpen(true)
+            setKeyWords(searchingString.split('-'))
+            moviesApi.getMovies()
+                .then(res => {
+                    setPreloaderIsOpen(false)
+                    setMoviesList(res)
+                })
+        } else {
+            setShowError(true)
+            setErrorMessage('Нужно ввести ключевое слово')
+        }
     }
 
     function handleMoreButtonClick() {
         if(moviesList.length > numberOfCards) {
-            setNumberOfCards(numberOfCards + 3)
+            setNumberOfCards(numberOfCards + 7)
         } else {
             alert('done')
         }
@@ -44,7 +55,8 @@ export default function MoviesCardList(props) {
                     ?<button className="movieCardList__more-button" onClick={handleMoreButtonClick}>Еще</button>
                     :''
                 }
-            </section>     
+            </section>
+            <ErrorPopup isOpen={showError} errorMessage={errorMessage} />
             <Footer /> 
         </>
     )
