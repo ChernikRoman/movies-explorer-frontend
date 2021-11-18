@@ -113,6 +113,7 @@
 @import url(./components/Login/blocks/__form/login__form.css);
 @import url(./components/Login/blocks/__input/login__input.css);
 @import url(./components/Login/blocks/__submit-button/login__submit-button.css);
+@import url(./components/Login/blocks/__submit-button/_disabled/login__submit-button_disabled.css);
 
 /*Стили Profile*/
 @import url(./components/Profile/blocks/profile.css);

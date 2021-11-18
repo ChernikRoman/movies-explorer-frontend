@@ -1,4 +1,5 @@
 .login__input {
+    position: relative;
     margin-bottom: 24px;
     font-size: 10px;
     line-height: 12px;
@@ -17,5 +18,8 @@
 }
 
 .login__input span {
-    opacity: 0;
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    color: #cf001c
 }

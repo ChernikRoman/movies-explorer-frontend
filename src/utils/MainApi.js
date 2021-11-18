@@ -90,10 +90,10 @@ class MainApi {
             method: 'POST',
             headers: this.headers,
             credentials: 'include',
-            body: {
+            body: JSON.stringify({
                 email: data.email,
                 password: data.password,
-            }
+            })
         })
     }
 
