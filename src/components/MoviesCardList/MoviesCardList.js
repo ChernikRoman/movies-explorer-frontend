@@ -41,10 +41,6 @@ export default function MoviesCardList(props) {
         }
     }
 
-    useEffect(()=>{
-        console.log()
-    })
-
     return (
         <>
             <Header />

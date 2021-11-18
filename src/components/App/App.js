@@ -10,14 +10,17 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 import Profile from '../Profile/Profile';
 import mainApi from '../../utils/MainApi';
 import CurrentUserContext from '../../context/CurrentUserContext';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 function App() {
   const [currentUser, setCurrentUser] = useState({})
+  const [isAuth, setIsAuth] = useState(false)
 
   const navigation = useNavigate();
 
-  function handleSignUp(data) {
+  function handleSignIn(data) {
     setCurrentUser(data)
+    setIsAuth(true)
   }
 
   useEffect(()=>{
@@ -30,11 +33,17 @@ function App() {
         <Navigation isOpen={false}/>
         <Routes>
           <Route path="/" element={<Main />}/>
-          <Route path="movies" element={<MoviesCardList  />}/>
-          <Route path="saved-movies" element={<MoviesCardList  />}/>
-          <Route path="profile" element={<Profile updateCurrentUser={handleSignUp} />}/>
-          <Route path="signin" element={<Login updateCurrentUser={handleSignUp} />}/>
-          <Route path="signup" element={<Register updateCurrentUser={handleSignUp} />}/>
+          <Route path="movies" element={<ProtectedRoute component={
+            <MoviesCardList />
+          } isAuth={isAuth} />}/>
+          <Route path="saved-movies" element={<ProtectedRoute component={
+            <MoviesCardList />
+          } isAuth={isAuth} />}/>
+          <Route path="profile" element={<ProtectedRoute component={
+            <Profile updateCurrentUser={handleSignIn}/>
+          } isAuth={isAuth} />}/>
+          <Route path="signin" element={<Login updateCurrentUser={handleSignIn} />}/>
+          <Route path="signup" element={<Register updateCurrentUser={handleSignIn} />}/>
           <Route path="*" element={<Page404 />}/>
         </Routes>
       </CurrentUserContext.Provider>
