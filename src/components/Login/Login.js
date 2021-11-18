@@ -51,12 +51,12 @@ export default function Login(props) {
                 <form className="login__form" onChange={handleChangeForm} onSubmit={handleSubmitForm}>
                     <label className="login__input">
                         E-mail
-                        <input name="login-input-email" type="email" placeholder="Введите email"></input>
+                        <input name="login-input-email" type="email" placeholder="Введите email" required></input>
                         {inputEmail && !isValidEmail && <span>Введите корректный email</span>}
                     </label>
                     <label className="login__input">
                         Пароль
-                        <input name="login-input-password" type="password" placeholder="Введите пароль"></input>
+                        <input name="login-input-password" type="password" placeholder="Введите пароль" required></input>
                         {inputPassword && !isValidPassword && <span>Пароль не менее 8 символов</span>}
                     </label>
                     {isValidForm

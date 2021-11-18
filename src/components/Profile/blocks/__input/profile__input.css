@@ -1,5 +1,6 @@
 .profile__input {
     display: flex;
+    position: relative;
     margin-bottom: 24px;
     font-size: 10px;
     line-height: 33px;
@@ -19,4 +20,11 @@
     background-color: #222222;
     font-size: 14px;
     line-height: 17px;
+}
+
+.profile__input span {
+    position: absolute;
+    bottom: -30px;
+    right: 0;
+    color: #cf001c
 }

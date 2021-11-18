@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import SearchForm from "../SearchForm/SearchForm"
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
@@ -6,6 +6,7 @@ import moviesApi from "../../utils/MoviesApi"
 import RenderedCards from "../RenderedCards/RenderedCards"
 import Preloader from "../Preloader/Preloader"
 import ErrorPopup from "../ErrorPopup/ErrorPopup"
+import CurrentUserContext from "../../context/CurrentUserContext"
 
 export default function MoviesCardList(props) {
     const [moviesList, setMoviesList] = useState([]);
@@ -15,6 +16,9 @@ export default function MoviesCardList(props) {
     const [showError, setShowError] =useState(false)
     const [errorMessage, setErrorMessage] = useState('');
 
+    let curuse = useContext(CurrentUserContext)
+
+    curuse = 'awdawdaw'
 
     function submitSearchForm(evt) {
         evt.preventDefault();
@@ -40,6 +44,10 @@ export default function MoviesCardList(props) {
             alert('done')
         }
     }
+
+    useEffect(()=>{
+        console.log(curuse)
+    })
 
     return (
         <>
