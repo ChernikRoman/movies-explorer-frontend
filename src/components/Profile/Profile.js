@@ -1,8 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
-import { useNavigate } from 'react-router-dom'
 import validator from 'validator'
 import Header from '../Header/Header';
-import mainApi from '../../utils/MainApi'
 import CurrentUserContext from '../../context/CurrentUserContext';
 
 export default function Profile(props) {
@@ -13,7 +11,6 @@ export default function Profile(props) {
     const [inputEmail, setInputEmail] = useState('')
 
     const currentUser = useContext(CurrentUserContext)
-    const navigation = useNavigate()
 
     function handleChangeForm(evt) {
         if(evt.target.name === 'profile-input-name') {
@@ -26,24 +23,6 @@ export default function Profile(props) {
         }
     }
 
-    function handleSubmitForm(evt) {
-        evt.preventDefault()
-        mainApi.patchMyUserData({
-            name: inputName,
-            email: inputEmail,
-        })
-            .then(res => {
-                props.updateCurrentUser(res)
-            })
-    }
-
-    function handleSignOut() {
-        mainApi.logout()
-            .then((res)=>{
-                localStorage.removeItem('movies')
-                navigation('/')
-            })
-    }
 
     useEffect(()=>{
         if (isValidName && isValidEmail) {
@@ -59,7 +38,7 @@ export default function Profile(props) {
             <section className="profile">
                 <div className="profile__container">
                     <h2 className="profile__title">Привет, {currentUser.name}!</h2>
-                    <form className="profile__form" onChange={handleChangeForm} onSubmit={handleSubmitForm}>
+                    <form className="profile__form" onChange={handleChangeForm} onSubmit={(evt) => {props.onPatch(evt, {name: inputName, email: inputEmail})}}>
                         <label className="profile__input">
                             Имя
                             <input name="profile-input-name" placeholder={currentUser.name} required></input>
@@ -74,7 +53,7 @@ export default function Profile(props) {
                             ?<input className="profile__submit-button" type="submit" value="Редактировать"></input>
                             :<input className="profile__submit-button" type="submit" value="Редактировать" disabled></input>
                         }
-                        <span onClick={handleSignOut}>Выйти из аккаунта</span>
+                        <span onClick={props.onExit}>Выйти из аккаунта</span>
                     </form>
                 </div>
             </section>

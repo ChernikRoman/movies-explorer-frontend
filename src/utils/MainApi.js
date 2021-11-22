@@ -103,6 +103,7 @@ class MainApi {
         return fetch(`${this.baseURL}/signout`, {
             method: 'GET',
             headers: this.headers,
+            credentials: 'include',
         })
         .then(this._checkResponse)
     }

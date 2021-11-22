@@ -1,20 +1,16 @@
-import { useContext, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import SearchForm from "../SearchForm/SearchForm"
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 import moviesApi from "../../utils/MoviesApi"
 import RenderedCards from "../RenderedCards/RenderedCards"
 import Preloader from "../Preloader/Preloader"
-import ErrorPopup from "../ErrorPopup/ErrorPopup"
-import CurrentUserContext from "../../context/CurrentUserContext"
 
 export default function MoviesCardList(props) {
     const [moviesList, setMoviesList] = useState([]);
     const [numberOfCards, setNumberOfCards] = useState(7);
     const [preloaderIsOpen, setPreloaderIsOpen] = useState(false);
     const [keyWords, setKeyWords] = useState('');
-    const [showError, setShowError] =useState(false)
-    const [errorMessage, setErrorMessage] = useState('');
 
     function submitSearchForm(evt) {
         evt.preventDefault();
@@ -30,8 +26,7 @@ export default function MoviesCardList(props) {
                     localStorage.setItem('movies', JSON.stringify(res))
                 })
         } else {
-            setShowError(true)
-            setErrorMessage('Нужно ввести ключевое слово')
+            console.log('Нужно ввести ключевое слово')
         }
     }
 
@@ -65,7 +60,6 @@ export default function MoviesCardList(props) {
                     :''
                 }
             </section>
-            <ErrorPopup isOpen={showError} errorMessage={errorMessage} />
             <Footer /> 
         </>
     )

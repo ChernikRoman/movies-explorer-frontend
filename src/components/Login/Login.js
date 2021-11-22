@@ -18,7 +18,7 @@ export default function Login(props) {
             setIsValidEmail(validator.isEmail(evt.target.value))
             setInputEmail(evt.target.value)
         } else if (evt.target.name === 'login-input-password') {
-            setIsValidPassword(evt.target.value.length >= 8)
+            setIsValidPassword(evt.target.value.length >= 3)
             setInputPassword(evt.target.value)
         }
     }
