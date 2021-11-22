@@ -40,7 +40,7 @@ export default function Profile(props) {
     function handleSignOut() {
         mainApi.logout()
             .then((res)=>{
-                console.log(res)
+                localStorage.removeItem('movies')
                 navigation('/')
             })
     }

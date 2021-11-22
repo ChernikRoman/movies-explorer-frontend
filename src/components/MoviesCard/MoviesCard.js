@@ -1,13 +1,20 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext } from 'react'
 import likeLogo from '../../images/moviesCard/like.svg'
 import likeLogoActive from '../../images/moviesCard/like-active.svg';
 import cross from '../../images/moviesCard/cross.svg';
-import timeConverter from "../../utils/timeConverter" 
+import timeConverter from "../../utils/timeConverter"
+import CurrentUserContext from '../../context/CurrentUserContext';
+import mainApi from '../../utils/MainApi';
 
 export default function MoviesCard(props) {
-    const [cardStatus, setCardStatus] = React.useState(props.status);
+    const [cardStatus, setCardStatus] = React.useState('normal');
     const [imgSource, setImgSource] = React.useState(likeLogo);
+
+    const currentUser = useContext(CurrentUserContext)
+
+    React.useEffect(()=>{
+
+    },[])
 
     React.useEffect(()=>{
         if (cardStatus !== 'normal') {

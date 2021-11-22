@@ -2,8 +2,6 @@ import React from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import linkButton from '../../images/header/link_button.svg'
 import menuButton from '../../images/header/menu_button.svg'
-import Navigation from '../Navigation/Navigation';
-import ReactDOM from 'react-dom';
 
 export default function Header (props) {
     const [windowWidth, setWindowWidth] = React.useState();

@@ -21,11 +21,13 @@ export default function MoviesCardList(props) {
         const searchingString = evt.target.querySelector('input').value;
         if (searchingString) {
             setPreloaderIsOpen(true)
-            setKeyWords(searchingString.split('-'))
+            setKeyWords(searchingString.split(' '))
             moviesApi.getMovies()
                 .then(res => {
                     setPreloaderIsOpen(false)
                     setMoviesList(res)
+                    console.log(res)
+                    localStorage.setItem('movies', JSON.stringify(res))
                 })
         } else {
             setShowError(true)
@@ -40,6 +42,13 @@ export default function MoviesCardList(props) {
             alert('done')
         }
     }
+
+    useEffect(()=>{
+        const localStorageMovies = JSON.parse(localStorage.getItem('movies'));
+        if (localStorageMovies) {
+            setMoviesList(localStorageMovies)
+        }
+    }, [])
 
     return (
         <>

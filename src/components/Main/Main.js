@@ -11,10 +11,6 @@ import { useEffect, useContext } from 'react';
 export default function Main() {
     let currentUser = useContext(CurrentUserContext)
 
-    useEffect(()=> {
-        console.log(currentUser)
-    })
-
     return (
         <>
             <Header />

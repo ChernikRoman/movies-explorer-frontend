@@ -13,8 +13,9 @@ class MainApi {
       }
 
     getMyUserData() {
-        return fetch(`${this.baseURL}/me`, {
+        return fetch(`${this.baseURL}/users/me`, {
             method: 'GET',
+            credentials: 'include',
             headers: this.headers,
         })
           .then(this._checkResponse)
@@ -42,7 +43,7 @@ class MainApi {
     }
 
     createMovie(data) {
-        return fetch(`${this.baseURL}/me`, {
+        return fetch(`${this.baseURL}/movies`, {
             method: 'POST',
             headers: this.headers,
             credentials: 'include',

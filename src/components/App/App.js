@@ -5,18 +5,18 @@ import Register from '../Register/Register';
 import Login from '../Login/Login';
 import Page404 from '../Page404/Page404';
 import Navigation from '../Navigation/Navigation';
-import React, { useState, useContext, useEffect } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import Profile from '../Profile/Profile';
-import mainApi from '../../utils/MainApi';
 import CurrentUserContext from '../../context/CurrentUserContext';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import mainApi from '../../utils/MainApi';
+import reactDom from 'react-dom';
 
 function App() {
   const [currentUser, setCurrentUser] = useState({})
   const [isAuth, setIsAuth] = useState(false)
 
-  const navigation = useNavigate();
 
   function handleSignIn(data) {
     setCurrentUser(data)
@@ -24,8 +24,9 @@ function App() {
   }
 
   useEffect(()=>{
-    console.log(currentUser)
-  }, [currentUser])
+    mainApi.getMyUserData()
+      .then(res => setCurrentUser({_id: res._id, name: res.name, email: res.email}))
+  }, [])
 
   return (
     <>
