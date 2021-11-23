@@ -5,6 +5,7 @@ import Footer from '../Footer/Footer'
 import moviesApi from "../../utils/MoviesApi"
 import RenderedCards from "../RenderedCards/RenderedCards"
 import Preloader from "../Preloader/Preloader"
+import mainApi from "../../utils/MainApi"
 
 export default function MoviesCardList(props) {
     const [moviesList, setMoviesList] = useState([]);
@@ -22,14 +23,8 @@ export default function MoviesCardList(props) {
             moviesApi.getMovies()
                 .then(res => {
                     setPreloaderIsOpen(false)
-                    console.log(res)
-                    let movies = res.map(movie => {
-                        movie.status = 'normal'
-                        return movie
-                    });
-                    localStorage.setItem('movies', JSON.stringify(movies))
+                    localStorage.setItem('movies', JSON.stringify(res))
                     setMoviesList(JSON.parse(localStorage.getItem('movies')))
-                    console.log(JSON.parse(localStorage.getItem('movies')))
                 })
                 .catch(()=>{
                     setError(`«Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. 
@@ -46,6 +41,23 @@ export default function MoviesCardList(props) {
         } else {
             alert('done')
         }
+    }
+
+    function handleSaveMovie(data) {
+            mainApi.createMovie(data)
+              .then(res => {
+                let movie = JSON.parse(localStorage.getItem('movies'))
+                movie[res.movieId - 1]._id = res._id
+                localStorage.setItem('movies', JSON.stringify(movie))
+                console.log(JSON.parse(localStorage.getItem('movies')))
+                })
+              .catch(err => console.log('Ошибка: ' + err))
+    }
+
+    function handleDeleteMovie(data) {
+        mainApi.deleteMovie(data)
+            .then(res => console.log(res))
+            .catch(err => console.log(err))
     }
 
     useEffect(()=>{
@@ -67,7 +79,7 @@ export default function MoviesCardList(props) {
             <section className="moviesCardList">
                 <Preloader isOpen={preloaderIsOpen}/>
                 <div className="moviesCardList__container">
-                    <RenderedCards cards={moviesList} numberOfCards={numberOfCards}/>
+                    <RenderedCards cards={moviesList} numberOfCards={numberOfCards} onSave={handleSaveMovie} onDelete={handleDeleteMovie}/>
                 </div>
                 {
                     error,

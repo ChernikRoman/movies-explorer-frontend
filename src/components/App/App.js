@@ -6,7 +6,7 @@ import Login from '../Login/Login';
 import Page404 from '../Page404/Page404';
 import Navigation from '../Navigation/Navigation';
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
 import Profile from '../Profile/Profile';
 import CurrentUserContext from '../../context/CurrentUserContext';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
@@ -16,6 +16,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState({})
   const [loggedIn, setloggedIn] = useState(false)
   const [viewportWidth, setviewportWidth] = useState(window.innerWidth)
+  const [isLoaded, setIsLoaded] =useState(false);
 
   const navigation = useNavigate()
 
@@ -29,8 +30,8 @@ function App() {
         .then((res)=>{
             localStorage.removeItem('movies')
             setCurrentUser({})
+            setloggedIn(false)
             navigation('/')
-
         })
   }
 
@@ -50,34 +51,47 @@ function App() {
       .then(res => {
         setCurrentUser({_id: res._id, name: res.name, email: res.email})
         setloggedIn(true)
+        setIsLoaded(true)
       })
-      .catch(err => console.log(err))
-      window.addEventListener('resize', ()=>{ setviewportWidth(window.innerWidth) })
+      .catch(err => {
+        setIsLoaded(true)
+        console.log(err)
+      })
+      window.addEventListener('resize', ()=>{ setTimeout(()=>{ setviewportWidth(window.innerWidth) }, 1000) })
   },[])
+
+//  function loadingUserData (){
+//     if (isLoaded) {
+//       return <div style={{color: 'blue'}}>1231231231</div>
+//     } else {
+//       return <Navigate replace to="/" />
+//     }
+//   }
+
+//   return loadingUserData()
 
   return (
     <>
       <button onClick={()=>{
-
-        mainApi.logout().then(res=> console.log(res))
+          setIsLoaded(true)
         }}>Button</button>
-        <span style={{color: 'blue'}}>User: name:{currentUser.name} email: {currentUser.email}</span>
+        <span style={{color: 'blue'}}>User: name:{currentUser.name} email: {currentUser.email} isLoaded={isLoaded ?'v' :'x'} loggedIn={loggedIn ?'v' :'x'}</span>
       <CurrentUserContext.Provider value={currentUser}>
         <Navigation isOpen={false}/>
         <Routes>
           <Route path="/" element={<Main windowWidth={viewportWidth}/>}/>
           <Route path="movies" element={
-            <ProtectedRoute loggedIn={loggedIn}>
+            <ProtectedRoute loggedIn={loggedIn} isLoaded={isLoaded}>
               <MoviesCardList viewportWidth={viewportWidth} />
             </ProtectedRoute>
           }/>
           <Route path="saved-movies" element={
-            <ProtectedRoute loggedIn={loggedIn}>
+            <ProtectedRoute loggedIn={loggedIn} isLoaded={isLoaded}>
               <MoviesCardList viewportWidth={viewportWidth} />
             </ProtectedRoute>
           }/>
           <Route path="profile" element={
-            <ProtectedRoute loggedIn={loggedIn}>
+            <ProtectedRoute loggedIn={loggedIn} isLoaded={isLoaded}>
               <Profile updateCurrentUser={handleSignIn} onExit={handleSignOut} onPatch={handlePatchUserData} windowWidth={viewportWidth}/>
             </ProtectedRoute>
           }/>

@@ -5,8 +5,8 @@ export default function RenderedCards (props) {
         <>
             {
                 props.cards.slice(0, props.numberOfCards).map(movie => {
-                    console.log(movie)
-                    return <MoviesCard key={movie.id} data={movie} />
+                    // console.log(movie)
+                    return <MoviesCard key={movie.id} data={movie} onSave={props.onSave} onDelete={props.onDelete}/>
                 })  
             }
         </>
