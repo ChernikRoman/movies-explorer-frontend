@@ -8,12 +8,12 @@ import Footer from '../Footer/Footer';
 import CurrentUserContext from "../../context/CurrentUserContext";
 import { useEffect, useContext } from 'react';
 
-export default function Main() {
+export default function Main(props) {
     let currentUser = useContext(CurrentUserContext)
 
     return (
         <>
-            <Header />
+            <Header windowWidth={props.windowWidth}/>
             <Promo />
             <AboutProject />
             <Techs />

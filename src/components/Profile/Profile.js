@@ -34,7 +34,7 @@ export default function Profile(props) {
 
     return(
         <>
-            <Header />
+            <Header windowWidth={props.windowWidth}/>
             <section className="profile">
                 <div className="profile__container">
                     <h2 className="profile__title">Привет, {currentUser.name}!</h2>

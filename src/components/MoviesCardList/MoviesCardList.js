@@ -8,9 +8,10 @@ import Preloader from "../Preloader/Preloader"
 
 export default function MoviesCardList(props) {
     const [moviesList, setMoviesList] = useState([]);
-    const [numberOfCards, setNumberOfCards] = useState(7);
+    const [numberOfCards, setNumberOfCards] = useState(95);
     const [preloaderIsOpen, setPreloaderIsOpen] = useState(false);
     const [keyWords, setKeyWords] = useState('');
+    const [error, setError] = useState('');
 
     function submitSearchForm(evt) {
         evt.preventDefault();
@@ -21,9 +22,18 @@ export default function MoviesCardList(props) {
             moviesApi.getMovies()
                 .then(res => {
                     setPreloaderIsOpen(false)
-                    setMoviesList(res)
                     console.log(res)
-                    localStorage.setItem('movies', JSON.stringify(res))
+                    let movies = res.map(movie => {
+                        movie.status = 'normal'
+                        return movie
+                    });
+                    localStorage.setItem('movies', JSON.stringify(movies))
+                    setMoviesList(JSON.parse(localStorage.getItem('movies')))
+                    console.log(JSON.parse(localStorage.getItem('movies')))
+                })
+                .catch(()=>{
+                    setError(`«Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. 
+                    Подождите немного и попробуйте ещё раз»`)
                 })
         } else {
             console.log('Нужно ввести ключевое слово')
@@ -43,11 +53,16 @@ export default function MoviesCardList(props) {
         if (localStorageMovies) {
             setMoviesList(localStorageMovies)
         }
+        if (props.viewportWidth <= 580) {
+            setNumberOfCards(5)
+        } else {
+            setNumberOfCards(7)
+        }
     }, [])
 
     return (
         <>
-            <Header />
+            <Header windowWidth={props.viewportWidth}/>
             <SearchForm onSubmitSearchForm={submitSearchForm} />
             <section className="moviesCardList">
                 <Preloader isOpen={preloaderIsOpen}/>
@@ -55,6 +70,7 @@ export default function MoviesCardList(props) {
                     <RenderedCards cards={moviesList} numberOfCards={numberOfCards}/>
                 </div>
                 {
+                    error,
                     numberOfCards <= moviesList.length
                     ?<button className="movieCardList__more-button" onClick={handleMoreButtonClick}>Еще</button>
                     :''

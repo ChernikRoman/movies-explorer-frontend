@@ -135,6 +135,3 @@
 @import url(./components/Navigation/blocks//__link/navigation__link.css);
 @import url(./components/Navigation/blocks/__menu-logo/navigation__menu-logo.css);
 @import url(./components/Navigation/blocks/__close-button/navigation__close-button.css);
-
-/*Стили ErrorPopup*/
-@import url(./components/ErrorPopup/error-popup.css)

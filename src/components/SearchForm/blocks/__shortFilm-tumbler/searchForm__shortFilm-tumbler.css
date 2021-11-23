@@ -7,6 +7,14 @@
     line-height: 18px;
 }
 
+@media (max-width: 580px) {
+    .searchForm__shortFilm-tumbler {
+        position: absolute;
+        bottom: 60px;
+        left: calc(50% - 100px);
+    }
+}
+
 .searchForm__shortFilm-tumbler input {
     position: relative;
     width: 34px;

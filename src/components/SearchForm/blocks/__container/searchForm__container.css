@@ -1,5 +1,4 @@
 .searchForm__container {
-    position: relative;
     display: grid;
     grid-template-rows: auto;
     grid-template-columns: auto 226px;

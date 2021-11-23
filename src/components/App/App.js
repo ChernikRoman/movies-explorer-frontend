@@ -15,6 +15,7 @@ import mainApi from '../../utils/MainApi';
 function App() {
   const [currentUser, setCurrentUser] = useState({})
   const [loggedIn, setloggedIn] = useState(false)
+  const [viewportWidth, setviewportWidth] = useState(window.innerWidth)
 
   const navigation = useNavigate()
 
@@ -51,6 +52,7 @@ function App() {
         setloggedIn(true)
       })
       .catch(err => console.log(err))
+      window.addEventListener('resize', ()=>{ setviewportWidth(window.innerWidth) })
   },[])
 
   return (
@@ -63,20 +65,20 @@ function App() {
       <CurrentUserContext.Provider value={currentUser}>
         <Navigation isOpen={false}/>
         <Routes>
-          <Route path="/" element={<Main />}/>
+          <Route path="/" element={<Main windowWidth={viewportWidth}/>}/>
           <Route path="movies" element={
             <ProtectedRoute loggedIn={loggedIn}>
-              <MoviesCardList />
+              <MoviesCardList viewportWidth={viewportWidth} />
             </ProtectedRoute>
           }/>
           <Route path="saved-movies" element={
             <ProtectedRoute loggedIn={loggedIn}>
-              <MoviesCardList />
+              <MoviesCardList viewportWidth={viewportWidth} />
             </ProtectedRoute>
           }/>
           <Route path="profile" element={
             <ProtectedRoute loggedIn={loggedIn}>
-              <Profile updateCurrentUser={handleSignIn} onExit={handleSignOut} onPatch={handlePatchUserData}/>
+              <Profile updateCurrentUser={handleSignIn} onExit={handleSignOut} onPatch={handlePatchUserData} windowWidth={viewportWidth}/>
             </ProtectedRoute>
           }/>
           <Route path="signin" element={<Login updateCurrentUser={handleSignIn} />}/>

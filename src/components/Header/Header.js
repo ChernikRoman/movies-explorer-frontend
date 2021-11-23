@@ -4,8 +4,6 @@ import linkButton from '../../images/header/link_button.svg'
 import menuButton from '../../images/header/menu_button.svg'
 
 export default function Header (props) {
-    const [windowWidth, setWindowWidth] = React.useState();
-
     const location = useLocation();
     const backgroundColor = location.pathname === '/' ?'#073042' :'#202020'
 
@@ -15,10 +13,8 @@ export default function Header (props) {
     }
 
     React.useEffect(()=>{
-        window.addEventListener('resize', ()=>{
-            setWindowWidth(document.documentElement.clientWidth);
-        })
-    })
+
+    }, [])
 
     return (
         //устанавливаем background для header
@@ -39,7 +35,7 @@ export default function Header (props) {
                     </div>
 
                     {/* Выбирам кнопку в зависимоти от ширины экрана */}
-                    {document.documentElement.clientWidth > 850
+                    {props.windowWidth > 850
                     ?<Link className="header__link-button" to="/profile">
                         Аккаунт
                         <img className="header__link-logo" src={linkButton} alt="Menu logo"/>
