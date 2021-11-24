@@ -4,6 +4,11 @@
     padding: 30px 70px;
 }
 
+.moviesCardList__container span:first-child{
+    display: block;
+    text-align: center;
+}
+
 @media (max-width: 1080px) {
     .moviesCardList__container {
         padding: 60px 30px;

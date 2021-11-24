@@ -44,6 +44,26 @@ function App() {
         .then(res => {
             setCurrentUser({name: res.name, email: res.email})
         })
+  }
+
+  function submitSearchForm(searchingString, ) {
+    if (searchingString.length >= 3) {
+        // setPreloaderIsOpen(true)
+        // setKeyWords()
+        // console.log(keyWords)
+        // moviesApi.getMovies()
+        //     .then(res => {
+        //         setPreloaderIsOpen(false)
+        //         localStorage.setItem('movies', JSON.stringify(res))
+        //         setMoviesList(JSON.parse(localStorage.getItem('movies')))
+        //     })
+        //     .catch(()=>{
+        //         setError(`«Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. 
+        //         Подождите немного и попробуйте ещё раз»`)
+    //         })
+    // } else {
+    //     console.log('Нужно ввести ключевое слово не меньше 3х символов')
+    }
 }
 
   useEffect(()=>{
@@ -60,16 +80,6 @@ function App() {
       window.addEventListener('resize', ()=>{ setTimeout(()=>{ setviewportWidth(window.innerWidth) }, 1000) })
   },[])
 
-//  function loadingUserData (){
-//     if (isLoaded) {
-//       return <div style={{color: 'blue'}}>1231231231</div>
-//     } else {
-//       return <Navigate replace to="/" />
-//     }
-//   }
-
-//   return loadingUserData()
-
   return (
     <>
       <button onClick={()=>{
@@ -79,10 +89,10 @@ function App() {
       <CurrentUserContext.Provider value={currentUser}>
         <Navigation isOpen={false}/>
         <Routes>
-          <Route path="/" element={<Main windowWidth={viewportWidth}/>}/>
+          <Route path="/" element={<Main windowWidth={viewportWidth} loggedIn={loggedIn}/>}/>
           <Route path="movies" element={
             <ProtectedRoute loggedIn={loggedIn} isLoaded={isLoaded}>
-              <MoviesCardList viewportWidth={viewportWidth} />
+              <MoviesCardList viewportWidth={viewportWidth} onSumbitForm={submitSearchForm} loggedIn={loggedIn}/>
             </ProtectedRoute>
           }/>
           <Route path="saved-movies" element={
@@ -92,7 +102,7 @@ function App() {
           }/>
           <Route path="profile" element={
             <ProtectedRoute loggedIn={loggedIn} isLoaded={isLoaded}>
-              <Profile updateCurrentUser={handleSignIn} onExit={handleSignOut} onPatch={handlePatchUserData} windowWidth={viewportWidth}/>
+              <Profile updateCurrentUser={handleSignIn} onExit={handleSignOut} onPatch={handlePatchUserData} windowWidth={viewportWidth} loggedIn={loggedIn}/>
             </ProtectedRoute>
           }/>
           <Route path="signin" element={<Login updateCurrentUser={handleSignIn} />}/>

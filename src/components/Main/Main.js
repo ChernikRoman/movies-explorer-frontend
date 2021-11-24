@@ -13,7 +13,7 @@ export default function Main(props) {
 
     return (
         <>
-            <Header windowWidth={props.windowWidth}/>
+            <Header windowWidth={props.windowWidth} loggedIn={props.loggedIn} />
             <Promo />
             <AboutProject />
             <Techs />

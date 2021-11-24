@@ -5,7 +5,7 @@ export default function SearchForm(props) {
         <section className="searchForm">
             <div className="searchForm__container">
                 <figure className="searchForm__background" />
-                <form className="searchForm__form" name="serachForm" onSubmit={props.onSubmitSearchForm} noValidate>
+                <form className="searchForm__form" name="serachForm" onSubmit={props.onSubmit} onChange={props.onChange} noValidate>
                     <img src={ico} className="searchForm__ico" alt="Serach ico" />
                     <input className="searchForm__search-string" type="search" placeholder="Фильм" required/>
                     <button className="searchForm__submit-button" type="submit">Найти</button>

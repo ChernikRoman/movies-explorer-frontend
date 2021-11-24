@@ -22,7 +22,7 @@ export default function Header (props) {
             <div className="header__container">
                 <Link className="header__logo" to="/" />
                 {/* Выбирам содержимое header в зависимоти от pathname */}
-                {location.pathname === '/'
+                {props.loggedIn !== true
                     ?<div className="header__auth">
                         <Link className="header__signup-button" to="/signup">Регистрация</Link>
                         <Link className="header__signin-button" to="/signin">Войти</Link>

@@ -6,33 +6,51 @@ import moviesApi from "../../utils/MoviesApi"
 import RenderedCards from "../RenderedCards/RenderedCards"
 import Preloader from "../Preloader/Preloader"
 import mainApi from "../../utils/MainApi"
+import checkUnuque from "../../utils/checkUnique"
 
 export default function MoviesCardList(props) {
     const [moviesList, setMoviesList] = useState([]);
-    const [numberOfCards, setNumberOfCards] = useState(95);
+    const [numberOfCards, setNumberOfCards] = useState(7);
     const [preloaderIsOpen, setPreloaderIsOpen] = useState(false);
-    const [keyWords, setKeyWords] = useState('');
+    const [searchingString, setSearchingString] = useState('')
+    // const [keyWords, setKeyWords] = useState('');
     const [error, setError] = useState('');
 
-    function submitSearchForm(evt) {
+    function handleSubmitForm(evt) {
         evt.preventDefault();
-        const searchingString = evt.target.querySelector('input').value;
-        if (searchingString) {
+        if (searchingString.length >= 3) {
+            setError('')
             setPreloaderIsOpen(true)
-            setKeyWords(searchingString.split(' '))
+            const keyWords = searchingString.split(' ')
+            const filteredCard = []
             moviesApi.getMovies()
                 .then(res => {
                     setPreloaderIsOpen(false)
+                    // setMoviesList(JSON.parse(localStorage.getItem('movies')))
+                    keyWords.forEach((word)=>{
+                        let regExp = new RegExp(word, 'i')
+
+                        res.forEach((obj)=>{
+                            if (regExp.test(obj.nameRU)) {
+                                filteredCard.push(obj)
+                            }
+                        })
+                    })
+                    setMoviesList(checkUnuque(filteredCard))
                     localStorage.setItem('movies', JSON.stringify(res))
-                    setMoviesList(JSON.parse(localStorage.getItem('movies')))
                 })
                 .catch(()=>{
                     setError(`«Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. 
                     Подождите немного и попробуйте ещё раз»`)
                 })
         } else {
-            console.log('Нужно ввести ключевое слово')
+            setError('Введите запрос длиннее 3х символов')
+
         }
+    }
+
+    function handleChangeSerachform(evt) {
+        setSearchingString(evt.target.value)
     }
 
     function handleMoreButtonClick() {
@@ -74,15 +92,15 @@ export default function MoviesCardList(props) {
 
     return (
         <>
-            <Header windowWidth={props.viewportWidth}/>
-            <SearchForm onSubmitSearchForm={submitSearchForm} />
+            <Header windowWidth={props.viewportWidth} loggedIn={props.loggedIn} />
+            <SearchForm onSubmit={handleSubmitForm} onChange={handleChangeSerachform}/>
             <section className="moviesCardList">
                 <Preloader isOpen={preloaderIsOpen}/>
                 <div className="moviesCardList__container">
+                    <span>{error}</span>
                     <RenderedCards cards={moviesList} numberOfCards={numberOfCards} onSave={handleSaveMovie} onDelete={handleDeleteMovie}/>
                 </div>
                 {
-                    error,
                     numberOfCards <= moviesList.length
                     ?<button className="movieCardList__more-button" onClick={handleMoreButtonClick}>Еще</button>
                     :''
