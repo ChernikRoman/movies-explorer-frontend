@@ -74,10 +74,17 @@ export default function SavedMoviesCardList(props) {
     }
 
     function handleDeleteMovie(data, id) {
-        const localStorageMovie = JSON.parse(localStorage.getItem('movies'))
-        delete localStorageMovie[id -1]._id
         mainApi.deleteMovie(data)
-            .then(res => console.log(res))
+            .then(res => {
+                let moviesArrUpdated = moviesList.filter((element) => {
+                    return element.movieId !== id
+                })
+                setMoviesList(moviesArrUpdated)
+                const localStorageMovie = JSON.parse(localStorage.getItem('movies'))
+                delete localStorageMovie[id -1]._id
+                localStorage.setItem('movies', JSON.stringify(localStorageMovie))
+                console.log(res)
+            })
             .catch(err => console.log(err))
     }
 

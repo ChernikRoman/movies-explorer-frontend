@@ -112,7 +112,7 @@ class MainApi {
 }
 
 const mainApi = new MainApi({
-    baseURL: 'https://api.moredomains.nomoredomains.rocks/',
+    baseURL: 'http://localhost:3000',
     headers: {
         'Content-Type': 'application/json',
     },
