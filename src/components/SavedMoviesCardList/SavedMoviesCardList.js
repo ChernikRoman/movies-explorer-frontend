@@ -7,6 +7,7 @@ import RenderedCards from "../RenderedCards/RenderedCards"
 import Preloader from "../Preloader/Preloader"
 import mainApi from "../../utils/MainApi"
 import checkUnuque from "../../utils/checkUnique"
+import transform from "../../utils/transformArr"
 
 export default function SavedMoviesCardList(props) {
     const [moviesList, setMoviesList] = useState([]);
@@ -22,40 +23,24 @@ export default function SavedMoviesCardList(props) {
             setPreloaderIsOpen(true)
             const keyWords = searchingString.split(' ')
             const filteredCard = []
-            const localStorageMovie = JSON.parse(localStorage.getItem('movies'));
-            if (!localStorageMovie) {
-                moviesApi.getMovies()
-                    .then(res => {
-                        setPreloaderIsOpen(false)
-                        keyWords.forEach((word)=>{
-                            let regExp = new RegExp(word, 'i')
-    
-                            res.forEach((obj)=>{
-                                if (regExp.test(obj.nameRU)) {
-                                    filteredCard.push(obj)
-                                }
-                            })
+            mainApi.getSavedMovies()
+                .then(res => {
+                    setPreloaderIsOpen(false)
+                    keyWords.forEach((word)=>{
+                        let regExp = new RegExp(word, 'i')
+
+                        res.forEach((obj)=>{
+                            if (regExp.test(obj.nameRU)) {
+                                filteredCard.push(obj)
+                            }
                         })
-                        localStorage.setItem('movies', JSON.stringify(res))
-                        setMoviesList(checkUnuque(filteredCard))
                     })
-                    .catch(()=>{
-                        setError(`«Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. 
-                        Подождите немного и попробуйте ещё раз»`)
-                    })                
-            } else {
-                keyWords.forEach((word)=>{
-                    let regExp = new RegExp(word, 'i')
-    
-                    localStorageMovie.forEach((obj)=>{
-                        if (regExp.test(obj.nameRU)) {
-                            filteredCard.push(obj)
-                        }
-                    })
+                    setMoviesList(transform(filteredCard))
                 })
-                setMoviesList(checkUnuque(filteredCard))
-                setPreloaderIsOpen(false)
-            }
+                .catch(()=>{
+                    setError(`«Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. 
+                    Подождите немного и попробуйте ещё раз»`)
+                })                
         } else {
             setError('Введите запрос длиннее 3х символов')
         }
@@ -96,7 +81,7 @@ export default function SavedMoviesCardList(props) {
         }
         mainApi.getSavedMovies()
             .then((res) => {
-                setMoviesList(res)
+                setMoviesList(transform(res))
             })
             .catch((err) => {
                 console.log(err)

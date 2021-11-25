@@ -4,8 +4,6 @@ import likeLogo from '../../images/moviesCard/like.svg'
 import likeLogoActive from '../../images/moviesCard/like-active.svg';
 import cross from '../../images/moviesCard/cross.svg';
 import timeConverter from "../../utils/timeConverter"
-import CurrentUserContext from '../../context/CurrentUserContext';
-import mainApi from '../../utils/MainApi';
 
 export default function MoviesCard(props) {
     const [isSaved, setIsSaved] = useState(false);

@@ -82,7 +82,7 @@ export default function MoviesCardList(props) {
                 localStorage.setItem('movies', JSON.stringify(movie))
                 console.log(JSON.parse(localStorage.getItem('movies')))
                 })
-              .catch(err => console.log('Ошибка: ' + err))
+              .catch(err => console.log(err))
     }
 
     function handleDeleteMovie(data) {
