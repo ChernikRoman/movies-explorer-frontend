@@ -11,6 +11,7 @@ import Profile from '../Profile/Profile';
 import CurrentUserContext from '../../context/CurrentUserContext';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import mainApi from '../../utils/MainApi';
+import SavedMoviesCardList from '../SavedMoviesCardList/SavedMoviesCardList';
 
 function App() {
   const [currentUser, setCurrentUser] = useState({})
@@ -46,26 +47,6 @@ function App() {
         })
   }
 
-  function submitSearchForm(searchingString, ) {
-    if (searchingString.length >= 3) {
-        // setPreloaderIsOpen(true)
-        // setKeyWords()
-        // console.log(keyWords)
-        // moviesApi.getMovies()
-        //     .then(res => {
-        //         setPreloaderIsOpen(false)
-        //         localStorage.setItem('movies', JSON.stringify(res))
-        //         setMoviesList(JSON.parse(localStorage.getItem('movies')))
-        //     })
-        //     .catch(()=>{
-        //         setError(`«Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. 
-        //         Подождите немного и попробуйте ещё раз»`)
-    //         })
-    // } else {
-    //     console.log('Нужно ввести ключевое слово не меньше 3х символов')
-    }
-}
-
   useEffect(()=>{
     mainApi.getMyUserData()
       .then(res => {
@@ -92,12 +73,12 @@ function App() {
           <Route path="/" element={<Main windowWidth={viewportWidth} loggedIn={loggedIn}/>}/>
           <Route path="movies" element={
             <ProtectedRoute loggedIn={loggedIn} isLoaded={isLoaded}>
-              <MoviesCardList viewportWidth={viewportWidth} onSumbitForm={submitSearchForm} loggedIn={loggedIn}/>
+              <MoviesCardList viewportWidth={viewportWidth} loggedIn={loggedIn}/>
             </ProtectedRoute>
           }/>
           <Route path="saved-movies" element={
             <ProtectedRoute loggedIn={loggedIn} isLoaded={isLoaded}>
-              <MoviesCardList viewportWidth={viewportWidth} />
+              <SavedMoviesCardList viewportWidth={viewportWidth} loggedIn={loggedIn} />
             </ProtectedRoute>
           }/>
           <Route path="profile" element={

@@ -30,16 +30,16 @@ export default function MoviesCard(props) {
                 duration: props.data.duration,
                 year: props.data.year,
                 description: props.data.description,
-                image: `https://api.nomoreparties.co/${props.data.image.url}`,
+                image: `https://api.nomoreparties.co${props.data.image.url}`,
                 trailer: props.data.trailerLink,
-                thumbnail: `https://api.nomoreparties.co/${props.data.image.formats.thumbnail.url}`,
+                thumbnail: `https://api.nomoreparties.co${props.data.image.formats.thumbnail.url}`,
                 movieId: props.data.id,
                 nameRU: props.data.nameRU,
                 nameEN: props.data.nameEN,
             });
             setIsSaved(!isSaved)
         } else {
-            props.onDelete(props.data._id);
+            props.onDelete(props.data._id, props.data.movieId);
             setIsSaved(!isSaved)
         }
     }

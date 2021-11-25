@@ -1,0 +1,22 @@
+.savedMoviesCardList__container {
+    margin: 0 auto;
+    max-width: 1140px;
+    padding: 30px 70px;
+}
+
+.savedMoviesCardList__container span:first-child{
+    display: block;
+    text-align: center;
+}
+
+@media (max-width: 1080px) {
+    .savedMoviesCardList__container {
+        padding: 60px 30px;
+    }
+}
+
+@media (max-width: 580px) {
+    .savedMoviesCardList__container {
+        padding: 40px 10px;
+    }
+}

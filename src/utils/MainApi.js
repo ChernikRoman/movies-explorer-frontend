@@ -38,6 +38,7 @@ class MainApi {
         return fetch(`${this.baseURL}/movies`, {
             method: 'GET',
             headers: this.headers,
+            credentials: 'include',
         })
         .then(this._checkResponse)
     }

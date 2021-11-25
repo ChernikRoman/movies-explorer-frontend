@@ -87,6 +87,11 @@
 @import url(./components/MoviesCardList/blocks/__container/moviesCardList__container.css);
 @import url(./components/MoviesCardList/blocks/__more-button/movieCardList__more-button.css);
 
+/*Стили savedMoviesCardList*/
+@import url(./components/SavedMoviesCardList/blocks/savedMoviesCardList.css);
+@import url(./components/SavedMoviesCardList/blocks/__container/saviedMoviesCardList__container.css);
+@import url(./components/SavedMoviesCardList/blocks/__more-button/saviedMovieCardList__more-button.css);
+
 /*Стили moviesCard*/
 @import url(./components/MoviesCard/blocks/moviesCard.css);
 @import url(./components/MoviesCard/blocks/__movie-logo/movieCard__movie-logo.css);

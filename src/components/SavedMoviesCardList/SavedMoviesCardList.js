@@ -8,7 +8,7 @@ import Preloader from "../Preloader/Preloader"
 import mainApi from "../../utils/MainApi"
 import checkUnuque from "../../utils/checkUnique"
 
-export default function MoviesCardList(props) {
+export default function SavedMoviesCardList(props) {
     const [moviesList, setMoviesList] = useState([]);
     const [numberOfCards, setNumberOfCards] = useState(7);
     const [preloaderIsOpen, setPreloaderIsOpen] = useState(false);
@@ -58,7 +58,6 @@ export default function MoviesCardList(props) {
             }
         } else {
             setError('Введите запрос длиннее 3х символов')
-
         }
     }
 
@@ -74,18 +73,9 @@ export default function MoviesCardList(props) {
         }
     }
 
-    function handleSaveMovie(data) {
-            mainApi.createMovie(data)
-              .then(res => {
-                let movie = JSON.parse(localStorage.getItem('movies'))
-                movie[res.movieId - 1]._id = res._id
-                localStorage.setItem('movies', JSON.stringify(movie))
-                console.log(JSON.parse(localStorage.getItem('movies')))
-                })
-              .catch(err => console.log('Ошибка: ' + err))
-    }
-
-    function handleDeleteMovie(data) {
+    function handleDeleteMovie(data, id) {
+        const localStorageMovie = JSON.parse(localStorage.getItem('movies'))
+        delete localStorageMovie[id -1]._id
         mainApi.deleteMovie(data)
             .then(res => console.log(res))
             .catch(err => console.log(err))
@@ -97,21 +87,28 @@ export default function MoviesCardList(props) {
         } else {
             setNumberOfCards(7)
         }
+        mainApi.getSavedMovies()
+            .then((res) => {
+                setMoviesList(res)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
     }, [])
 
     return (
         <>
             <Header windowWidth={props.viewportWidth} loggedIn={props.loggedIn} />
             <SearchForm onSubmit={handleSubmitForm} onChange={handleChangeSerachform}/>
-            <section className="moviesCardList">
+            <section className="savedMoviesCardList">
                 <Preloader isOpen={preloaderIsOpen}/>
-                <div className="moviesCardList__container">
+                <div className="savedMoviesCardList__container">
                     <span>{error}</span>
-                    <RenderedCards cards={moviesList} numberOfCards={numberOfCards} onSave={handleSaveMovie} onDelete={handleDeleteMovie}/>
+                    <RenderedCards cards={moviesList} numberOfCards={numberOfCards} onDelete={handleDeleteMovie}/>
                 </div>
                 {
                     numberOfCards <= moviesList.length
-                    ?<button className="movieCardList__more-button" onClick={handleMoreButtonClick}>Еще</button>
+                    ?<button className="savedMovieCardList__more-button" onClick={handleMoreButtonClick}>Еще</button>
                     :''
                 }
             </section>
