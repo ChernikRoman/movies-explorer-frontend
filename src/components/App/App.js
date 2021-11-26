@@ -63,10 +63,6 @@ function App() {
 
   return (
     <>
-      <button onClick={()=>{
-          setIsLoaded(true)
-        }}>Button</button>
-        <span style={{color: 'blue'}}>User: name:{currentUser.name} email: {currentUser.email} isLoaded={isLoaded ?'v' :'x'} loggedIn={loggedIn ?'v' :'x'}</span>
       <CurrentUserContext.Provider value={currentUser}>
         <Navigation isOpen={false}/>
         <Routes>
