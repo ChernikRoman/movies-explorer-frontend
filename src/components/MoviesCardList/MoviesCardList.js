@@ -97,7 +97,7 @@ export default function MoviesCardList(props) {
         } else {
             setNumberOfCards(7)
         }
-    }, [])
+    }, [props.viewportWidth])
 
     return (
         <>

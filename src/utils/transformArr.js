@@ -1,10 +1,9 @@
 export default function transform (arr) {
-    let newArr = [];
-    arr.map((item) => {
+    let newArr = arr.map((item) => {
         console.log()
         const imageUrl = item.image;
         const thumbnailUrl = item.thumbnail;
-        newArr.push({
+        return {
             country: item.country,
             director: item.director,
             duration: item.duration,
@@ -22,8 +21,7 @@ export default function transform (arr) {
             id: item.movieId,
             nameRU: item.nameRU,
             nameEN: item.nameEN,
-        })
+        }
     })
-    console.log(newArr)
     return newArr
 }

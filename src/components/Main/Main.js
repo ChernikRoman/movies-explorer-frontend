@@ -5,12 +5,8 @@ import AboutMe from '../AboutMe/AboutMe';
 import Portfolio from '../Portfolio/Portfolio';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
-import CurrentUserContext from "../../context/CurrentUserContext";
-import { useEffect, useContext } from 'react';
 
 export default function Main(props) {
-    let currentUser = useContext(CurrentUserContext)
-
     return (
         <>
             <Header windowWidth={props.windowWidth} loggedIn={props.loggedIn} />

@@ -2,11 +2,9 @@ import { useEffect, useState } from "react"
 import SearchForm from "../SearchForm/SearchForm"
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
-import moviesApi from "../../utils/MoviesApi"
 import RenderedCards from "../RenderedCards/RenderedCards"
 import Preloader from "../Preloader/Preloader"
 import mainApi from "../../utils/MainApi"
-import checkUnuque from "../../utils/checkUnique"
 import transform from "../../utils/transformArr"
 
 export default function SavedMoviesCardList(props) {
@@ -79,6 +77,9 @@ export default function SavedMoviesCardList(props) {
         } else {
             setNumberOfCards(7)
         }
+    }, [props.viewportWidth])
+
+    useEffect(()=>{
         mainApi.getSavedMovies()
             .then((res) => {
                 setMoviesList(transform(res))

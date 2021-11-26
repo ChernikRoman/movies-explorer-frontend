@@ -6,7 +6,7 @@ import Login from '../Login/Login';
 import Page404 from '../Page404/Page404';
 import Navigation from '../Navigation/Navigation';
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import Profile from '../Profile/Profile';
 import CurrentUserContext from '../../context/CurrentUserContext';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
