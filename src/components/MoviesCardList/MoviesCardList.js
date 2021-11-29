@@ -15,6 +15,7 @@ export default function MoviesCardList(props) {
     const [preloaderIsOpen, setPreloaderIsOpen] = useState(false);
     const [searchingString, setSearchingString] = useState('');
     const [shortMovieTumbler, setShortMovieTumbler] = useState(false);
+    const [buferMovies, setBuferMovies] = useState([])
     const [error, setError] = useState('');
 
     function handleSubmitForm(evt) {
@@ -74,6 +75,13 @@ export default function MoviesCardList(props) {
 
     function handleChangeShortMovieTumbler() {
         setShortMovieTumbler(!shortMovieTumbler)
+        if (moviesList.length !== 0 && shortMovieTumbler === false) {
+            setBuferMovies(moviesList.slice())
+            setMoviesList(filteringByLenght(moviesList))
+        } else if (moviesList.length !== 0 && shortMovieTumbler === true) {
+            setMoviesList(buferMovies)
+            setBuferMovies([])
+        }
     }
 
     function handleMoreButtonClick() {
