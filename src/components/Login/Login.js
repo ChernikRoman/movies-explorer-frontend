@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, Navigate } from 'react-router-dom';
 import validator from 'validator'
 import mainApi from '../../utils/MainApi'
 import logo from '../../images/header/header_logo.svg';
@@ -44,9 +44,13 @@ export default function Login(props) {
     },[isValidEmail, isValidPassword, isValidForm])
 
     return (
-        <section className="login">
+        props.isLoggedIn
+            ? <Navigate replace to="/" />
+            : <section className="login">
             <div className="login__container">
-                <img className="login__login-logo" src={logo} alt="Login logo" />
+                <Link to="/">
+                    <img className="login__login-logo" src={logo} alt="Login logo" />
+                </Link>
                 <h2 className="login__title">Рады видеть!</h2>
                 <form className="login__form" onChange={handleChangeForm} onSubmit={handleSubmitForm}>
                     <label className="login__input">

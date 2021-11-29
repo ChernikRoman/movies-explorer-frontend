@@ -7,63 +7,73 @@ import RenderedCards from "../RenderedCards/RenderedCards"
 import Preloader from "../Preloader/Preloader"
 import mainApi from "../../utils/MainApi"
 import checkUnuque from "../../utils/checkUnique"
+import filteringByLenght from "../../utils/filteringByLenght"
 
 export default function MoviesCardList(props) {
     const [moviesList, setMoviesList] = useState([]);
     const [numberOfCards, setNumberOfCards] = useState(7);
     const [preloaderIsOpen, setPreloaderIsOpen] = useState(false);
-    const [searchingString, setSearchingString] = useState('')
+    const [searchingString, setSearchingString] = useState('');
+    const [shortMovieTumbler, setShortMovieTumbler] = useState(false);
     const [error, setError] = useState('');
 
     function handleSubmitForm(evt) {
         evt.preventDefault();
-        if (searchingString.length >= 3) {
-            setError('')
-            setPreloaderIsOpen(true)
-            const keyWords = searchingString.split(' ')
-            const filteredCard = []
-            const localStorageMovie = JSON.parse(localStorage.getItem('movies'));
-            if (!localStorageMovie) {
-                moviesApi.getMovies()
-                    .then(res => {
-                        setPreloaderIsOpen(false)
-                        keyWords.forEach((word)=>{
-                            let regExp = new RegExp(word, 'i')
-    
-                            res.forEach((obj)=>{
-                                if (regExp.test(obj.nameRU)) {
-                                    filteredCard.push(obj)
-                                }
-                            })
+        setError('')
+        setPreloaderIsOpen(true)
+        const keyWords = searchingString.split(' ')
+        const filteredCard = []
+        const localStorageMovie = JSON.parse(localStorage.getItem('movies'));
+        if (!localStorageMovie) {
+            moviesApi.getMovies()
+                .then(res => {
+                    setPreloaderIsOpen(false)
+                    keyWords.forEach((word)=>{
+                        let regExp = new RegExp(word, 'i')
+                        res.forEach((obj)=>{
+                            if (regExp.test(obj.nameRU)) {
+                                filteredCard.push(obj)
+                            }
                         })
-                        localStorage.setItem('movies', JSON.stringify(res))
-                        setMoviesList(checkUnuque(filteredCard))
                     })
-                    .catch(()=>{
-                        setError(`«Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. 
-                        Подождите немного и попробуйте ещё раз»`)
-                    })                
-            } else {
-                keyWords.forEach((word)=>{
-                    let regExp = new RegExp(word, 'i')
-    
-                    localStorageMovie.forEach((obj)=>{
-                        if (regExp.test(obj.nameRU)) {
-                            filteredCard.push(obj)
-                        }
-                    })
+                    localStorage.setItem('movies', JSON.stringify(res))
+                    const filteredMovies = checkUnuque(filteredCard);
+                    if (shortMovieTumbler) {
+                        setMoviesList(filteringByLenght(filteredMovies))
+                    } else {
+                        setMoviesList(filteredMovies)
+                    }
                 })
-                setMoviesList(checkUnuque(filteredCard))
-                setPreloaderIsOpen(false)
-            }
+                .catch(()=>{
+                    setError(`«Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. 
+                    Подождите немного и попробуйте ещё раз»`)
+                })                
         } else {
-            setError('Введите запрос длиннее 3х символов')
+            keyWords.forEach((word)=>{
+                let regExp = new RegExp(word, 'i')
 
+                localStorageMovie.forEach((obj)=>{
+                    if (regExp.test(obj.nameRU)) {
+                        filteredCard.push(obj)
+                    }
+                })
+            })
+            let filteredMovies = checkUnuque(filteredCard);
+            if (shortMovieTumbler) {
+                setMoviesList(filteringByLenght(filteredMovies))
+            } else {
+                setMoviesList(filteredMovies)
+            }
+            setPreloaderIsOpen(false)
         }
     }
 
     function handleChangeSerachform(evt) {
         setSearchingString(evt.target.value)
+    }
+
+    function handleChangeShortMovieTumbler() {
+        setShortMovieTumbler(!shortMovieTumbler)
     }
 
     function handleMoreButtonClick() {
@@ -102,7 +112,7 @@ export default function MoviesCardList(props) {
     return (
         <>
             <Header windowWidth={props.viewportWidth} loggedIn={props.loggedIn} />
-            <SearchForm onSubmit={handleSubmitForm} onChange={handleChangeSerachform}/>
+            <SearchForm onSubmit={handleSubmitForm} onChange={handleChangeSerachform} onChangeTumbler={handleChangeShortMovieTumbler}/>
             <section className="moviesCardList">
                 <Preloader isOpen={preloaderIsOpen}/>
                 <div className="moviesCardList__container">

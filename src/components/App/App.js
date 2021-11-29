@@ -6,7 +6,7 @@ import Login from '../Login/Login';
 import Page404 from '../Page404/Page404';
 import Navigation from '../Navigation/Navigation';
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
 import Profile from '../Profile/Profile';
 import CurrentUserContext from '../../context/CurrentUserContext';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
@@ -36,15 +36,8 @@ function App() {
         })
   }
 
-  function handlePatchUserData(evt, data) {
-    evt.preventDefault()
-    mainApi.patchMyUserData({
-        name: data.name,
-        email: data.email,
-    })
-        .then(res => {
-            setCurrentUser({name: res.name, email: res.email})
-        })
+  function updateCurrentUser(data) {
+    setCurrentUser(data)
   }
 
   useEffect(()=>{
@@ -56,14 +49,18 @@ function App() {
       })
       .catch(err => {
         setIsLoaded(true)
-        console.log(err)
       })
       window.addEventListener('resize', ()=>{ setTimeout(()=>{ setviewportWidth(window.innerWidth) }, 1000) })
   },[])
 
   return (
-    <>
+    isLoaded
+    ? <>
       <CurrentUserContext.Provider value={currentUser}>
+      <button onClick={()=>{
+          setIsLoaded(true)
+        }}>Button</button>
+        <span style={{color: 'blue'}}>User: name:{currentUser.name} email: {currentUser.email} isLoaded={isLoaded ?'v' :'x'} loggedIn={loggedIn ?'v' :'x'}</span>
         <Navigation isOpen={false}/>
         <Routes>
           <Route path="/" element={<Main windowWidth={viewportWidth} loggedIn={loggedIn}/>}/>
@@ -79,15 +76,16 @@ function App() {
           }/>
           <Route path="profile" element={
             <ProtectedRoute loggedIn={loggedIn} isLoaded={isLoaded}>
-              <Profile updateCurrentUser={handleSignIn} onExit={handleSignOut} onPatch={handlePatchUserData} windowWidth={viewportWidth} loggedIn={loggedIn}/>
+              <Profile currentUser={currentUser} updateCurrentUser={handleSignIn} onExit={handleSignOut} onUpdateCurrentUser={updateCurrentUser} windowWidth={viewportWidth} loggedIn={loggedIn}/>
             </ProtectedRoute>
           }/>
-          <Route path="signin" element={<Login updateCurrentUser={handleSignIn} />}/>
-          <Route path="signup" element={<Register updateCurrentUser={handleSignIn} />}/>
+          <Route path="signin" element={<Login updateCurrentUser={handleSignIn} isLoggedIn={loggedIn} />}/>
+          <Route path="signup" element={<Register updateCurrentUser={handleSignIn} isLoggedIn={loggedIn} />}/>
           <Route path="*" element={<Page404 />}/>
         </Routes>
       </CurrentUserContext.Provider>
     </>
+    :<></>
   );
 }
 

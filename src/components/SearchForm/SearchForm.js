@@ -12,7 +12,7 @@ export default function SearchForm(props) {
                 </form>
                 <label className="searchForm__shortFilm-tumbler">
                     <span className="searchForm__slider" />
-                    <input type="checkbox" />
+                    <input type="checkbox" onClick={props.onChangeTumbler}/>
                     Короткометражки
                 </label>
             </div>
