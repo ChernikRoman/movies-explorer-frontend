@@ -15,7 +15,6 @@ export default function MoviesCardList(props) {
     const [preloaderIsOpen, setPreloaderIsOpen] = useState(false);
     const [searchingString, setSearchingString] = useState('');
     const [shortMovieTumbler, setShortMovieTumbler] = useState(false);
-    const [buferMovies, setBuferMovies] = useState([])
     const [error, setError] = useState('');
 
     function handleSubmitForm(evt) {
@@ -41,8 +40,10 @@ export default function MoviesCardList(props) {
                     const filteredMovies = checkUnuque(filteredCard);
                     if (shortMovieTumbler) {
                         setMoviesList(filteringByLenght(filteredMovies))
+                        if (filteringByLenght(filteredMovies).length === 0) setError('Ничего не найдено')
                     } else {
                         setMoviesList(filteredMovies)
+                        if (filteredMovies.length === 0) setError('Ничего не найдено')
                     }
                 })
                 .catch(()=>{
@@ -62,8 +63,10 @@ export default function MoviesCardList(props) {
             let filteredMovies = checkUnuque(filteredCard);
             if (shortMovieTumbler) {
                 setMoviesList(filteringByLenght(filteredMovies))
+                if (filteringByLenght(filteredMovies).length === 0) setError('Ничего не найдено')
             } else {
                 setMoviesList(filteredMovies)
+                if (filteredMovies.length === 0) setError('Ничего не найдено')
             }
             setPreloaderIsOpen(false)
         }
@@ -76,11 +79,21 @@ export default function MoviesCardList(props) {
     function handleChangeShortMovieTumbler() {
         setShortMovieTumbler(!shortMovieTumbler)
         if (moviesList.length !== 0 && shortMovieTumbler === false) {
-            setBuferMovies(moviesList.slice())
             setMoviesList(filteringByLenght(moviesList))
-        } else if (moviesList.length !== 0 && shortMovieTumbler === true) {
-            setMoviesList(buferMovies)
-            setBuferMovies([])
+        } else if (moviesList.length !== 0 && shortMovieTumbler === true){
+            const keyWords = searchingString.split(' ')
+            const localStorageMovie = JSON.parse(localStorage.getItem('movies'));
+            const filteredCard = []
+            keyWords.forEach((word)=>{
+                let regExp = new RegExp(word, 'i')
+
+                localStorageMovie.forEach((obj)=>{
+                    if (regExp.test(obj.nameRU)) {
+                        filteredCard.push(obj)
+                    }
+                })
+            })
+            setMoviesList(checkUnuque(filteredCard))
         }
     }
 

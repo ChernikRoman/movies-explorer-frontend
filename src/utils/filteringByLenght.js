@@ -1,7 +1,7 @@
 function filteringByLenght(arr) {
     const filteredItem = [];
     arr.forEach((item) => {
-        if (item.duration <= 70) {
+        if (item.duration <= 75) {
             filteredItem.push(item)
         }
     })
