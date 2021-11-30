@@ -15,58 +15,50 @@ export default function MoviesCardList(props) {
     const [preloaderIsOpen, setPreloaderIsOpen] = useState(false);
     const [searchingString, setSearchingString] = useState('');
     const [shortMovieTumbler, setShortMovieTumbler] = useState(false);
+    const [buferMovies, setBuferMovies] = useState([]);
     const [error, setError] = useState('');
 
     function handleSubmitForm(evt) {
         evt.preventDefault();
         setError('')
         setPreloaderIsOpen(true)
-        const keyWords = searchingString.split(' ')
         const filteredCard = []
         const localStorageMovie = JSON.parse(localStorage.getItem('movies'));
         if (!localStorageMovie) {
             moviesApi.getMovies()
                 .then(res => {
-                    setPreloaderIsOpen(false)
-                    keyWords.forEach((word)=>{
-                        let regExp = new RegExp(word, 'i')
-                        res.forEach((obj)=>{
-                            if (regExp.test(obj.nameRU)) {
-                                filteredCard.push(obj)
-                            }
-                        })
+                    res.forEach((obj)=>{
+                        if (obj.nameRU.toLowerCase().includes(searchingString.trim().toLowerCase())) {
+                            filteredCard.push(obj)
+                        }
                     })
                     localStorage.setItem('movies', JSON.stringify(res))
-                    const filteredMovies = checkUnuque(filteredCard);
                     if (shortMovieTumbler) {
-                        setMoviesList(filteringByLenght(filteredMovies))
-                        if (filteringByLenght(filteredMovies).length === 0) setError('Ничего не найдено')
+                        setMoviesList(filteringByLenght(filteredCard))
+                        if (filteringByLenght(filteredCard).length === 0) setError('Ничего не найдено')
                     } else {
-                        setMoviesList(filteredMovies)
-                        if (filteredMovies.length === 0) setError('Ничего не найдено')
+                        setMoviesList(filteredCard)
+                        if (filteredCard.length === 0) setError('Ничего не найдено')
                     }
+                    setPreloaderIsOpen(false)
                 })
                 .catch(()=>{
                     setError(`«Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. 
                     Подождите немного и попробуйте ещё раз»`)
                 })                
         } else {
-            keyWords.forEach((word)=>{
-                let regExp = new RegExp(word, 'i')
-
-                localStorageMovie.forEach((obj)=>{
-                    if (regExp.test(obj.nameRU)) {
-                        filteredCard.push(obj)
-                    }
-                })
+            localStorageMovie.forEach((obj)=>{
+                if (obj.nameRU.toLowerCase().includes(searchingString.trim().toLowerCase())) {
+                    filteredCard.push(obj)
+                }
             })
-            let filteredMovies = checkUnuque(filteredCard);
+            setBuferMovies(filteredCard)
             if (shortMovieTumbler) {
-                setMoviesList(filteringByLenght(filteredMovies))
-                if (filteringByLenght(filteredMovies).length === 0) setError('Ничего не найдено')
+                setMoviesList(filteringByLenght(filteredCard))
+                if (filteringByLenght(filteredCard).length === 0) setError('Ничего не найдено')
             } else {
-                setMoviesList(filteredMovies)
-                if (filteredMovies.length === 0) setError('Ничего не найдено')
+                setMoviesList(filteredCard)
+                if (filteredCard.length === 0) setError('Ничего не найдено')
             }
             setPreloaderIsOpen(false)
         }
@@ -78,22 +70,12 @@ export default function MoviesCardList(props) {
 
     function handleChangeShortMovieTumbler() {
         setShortMovieTumbler(!shortMovieTumbler)
-        if (moviesList.length !== 0 && shortMovieTumbler === false) {
+        if (shortMovieTumbler === false) {
+            setBuferMovies(moviesList)
             setMoviesList(filteringByLenght(moviesList))
-        } else if (moviesList.length !== 0 && shortMovieTumbler === true){
-            const keyWords = searchingString.split(' ')
-            const localStorageMovie = JSON.parse(localStorage.getItem('movies'));
-            const filteredCard = []
-            keyWords.forEach((word)=>{
-                let regExp = new RegExp(word, 'i')
-
-                localStorageMovie.forEach((obj)=>{
-                    if (regExp.test(obj.nameRU)) {
-                        filteredCard.push(obj)
-                    }
-                })
-            })
-            setMoviesList(checkUnuque(filteredCard))
+        } else {
+            setMoviesList(buferMovies)
+            setBuferMovies([])
         }
     }
 
@@ -129,6 +111,10 @@ export default function MoviesCardList(props) {
             setNumberOfCards(7)
         }
     }, [props.viewportWidth])
+
+    useEffect(()=>{
+        console.log(buferMovies)
+    }, [buferMovies])
 
     return (
         <>
