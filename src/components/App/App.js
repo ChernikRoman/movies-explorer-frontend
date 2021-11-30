@@ -67,10 +67,6 @@ function App() {
     isLoaded
     ? <>
       <CurrentUserContext.Provider value={currentUser}>
-      <button onClick={()=>{
-          navigation('/awdajwn')
-        }}>Button</button>
-        <span style={{color: 'blue'}}>User: name:{currentUser.name} email: {currentUser.email} isLoaded={isLoaded ?'v' :'x'} loggedIn={loggedIn ?'v' :'x'}</span>
         <Navigation isOpen={false}/>
         <Routes>
           <Route path="/" element={<Main windowWidth={viewportWidth} loggedIn={loggedIn}/>}/>
