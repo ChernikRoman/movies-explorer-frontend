@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useNavigate, Navigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import validator from 'validator'
 import logo from '../../images/header/header_logo.svg'
 import mainApi from '../../utils/MainApi'
@@ -13,8 +13,6 @@ export default function Register(props) {
     const [inputEmail, setInputEmail] = useState('')
     const [inputPassword, setInputPassword] = useState('')
     const [errorCode, setErrorCode] = useState('')
-
-    const navigation = useNavigate();
 
     function handleChangeForm(evt) {
         if(evt.target.name === 'register-input-name') {
@@ -42,7 +40,6 @@ export default function Register(props) {
                 mainApi.login({ email: inputEmail, password: inputPassword })
                 .then((data) => {
                     props.updateCurrentUser(data)
-                    navigation('/movies')
                 })
             })
             .catch((err) => {
@@ -60,7 +57,7 @@ export default function Register(props) {
 
     return (
         props.isLoggedIn
-        ? <Navigate replace to="/" />
+        ? <Navigate replace to="/movies" />
         : <section className="register">
         <div className="register__container">
             <Link to="/">

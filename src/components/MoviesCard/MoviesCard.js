@@ -14,6 +14,10 @@ export default function MoviesCard(props) {
         props.data._id === undefined ? setIsSaved(false) : setIsSaved(true);
     }, [props.data._id])
 
+    useEffect(() => {
+        if (location.pathname === '/saved-movies') setIsSaved(true)
+    }, [location.pathname])
+
     function handleCardClick(evt) {
         if (!evt.target.className.includes('moviesCard__status-button')) {
             window.open(props.data.trailerLink);
@@ -37,7 +41,7 @@ export default function MoviesCard(props) {
             });
             setIsSaved(!isSaved)
         } else {
-            props.onDelete(props.data._id, props.data.movieId);
+            props.onDelete(props.data.id);
             setIsSaved(!isSaved)
         }
     }
@@ -47,7 +51,7 @@ export default function MoviesCard(props) {
             <div className="moviesCard__movie-info">
                 <h3 className="moviesCard__movie-name">{props.data.nameRU}</h3>
                 <span className="moviesCard__movie-duration">{timeConverter(props.data.duration)}</span>
-                <img className="moviesCard__status-button" src={isSaved ? (location.pathname === '/movies' ? likeLogoActive : cross) : likeLogo} alt="status button" onClick={handleStatusButtonClick}/>
+                <img className="moviesCard__status-button" src={location.pathname === '/movies' ? (isSaved ? likeLogoActive : likeLogo) : cross } alt="status button" onClick={handleStatusButtonClick}/>
             </div>
             <img className="movieCard__movie-logo" src={'https://api.nomoreparties.co' + props.data.image.url} alt="movie logo" />
         </section>

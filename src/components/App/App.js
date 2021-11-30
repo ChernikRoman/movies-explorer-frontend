@@ -6,7 +6,7 @@ import Login from '../Login/Login';
 import Page404 from '../Page404/Page404';
 import Navigation from '../Navigation/Navigation';
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import Profile from '../Profile/Profile';
 import CurrentUserContext from '../../context/CurrentUserContext';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
@@ -30,6 +30,7 @@ function App() {
     mainApi.logout()
         .then((res)=>{
             localStorage.removeItem('movies')
+            localStorage.removeItem('currentUser')
             setCurrentUser({})
             setloggedIn(false)
             navigation('/')
@@ -41,8 +42,11 @@ function App() {
   }
 
   useEffect(()=>{
-    mainApi.getMyUserData()
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'))
+    if (!currentUser) {
+      mainApi.getMyUserData()
       .then(res => {
+        localStorage.setItem('currentUser', JSON.stringify(res))
         setCurrentUser({_id: res._id, name: res.name, email: res.email})
         setloggedIn(true)
         setIsLoaded(true)
@@ -50,6 +54,12 @@ function App() {
       .catch(err => {
         setIsLoaded(true)
       })
+    } else {
+      console.log(currentUser)
+      setCurrentUser({_id: currentUser._id, name: currentUser.name, email: currentUser.email})
+      setloggedIn(true)
+      setIsLoaded(true)
+    }
       window.addEventListener('resize', ()=>{ setTimeout(()=>{ setviewportWidth(window.innerWidth) }, 1000) })
   },[])
 
@@ -58,7 +68,7 @@ function App() {
     ? <>
       <CurrentUserContext.Provider value={currentUser}>
       <button onClick={()=>{
-          setIsLoaded(true)
+          navigation('/awdajwn')
         }}>Button</button>
         <span style={{color: 'blue'}}>User: name:{currentUser.name} email: {currentUser.email} isLoaded={isLoaded ?'v' :'x'} loggedIn={loggedIn ?'v' :'x'}</span>
         <Navigation isOpen={false}/>
