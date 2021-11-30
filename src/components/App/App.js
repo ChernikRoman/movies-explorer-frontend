@@ -55,7 +55,6 @@ function App() {
         setIsLoaded(true)
       })
     } else {
-      console.log(currentUser)
       setCurrentUser({_id: currentUser._id, name: currentUser.name, email: currentUser.email})
       setloggedIn(true)
       setIsLoaded(true)
