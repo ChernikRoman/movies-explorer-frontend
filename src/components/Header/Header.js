@@ -2,12 +2,8 @@ import React from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import linkButton from '../../images/header/link_button.svg'
 import menuButton from '../../images/header/menu_button.svg'
-import Navigation from '../Navigation/Navigation';
-import ReactDOM from 'react-dom';
 
 export default function Header (props) {
-    const [windowWidth, setWindowWidth] = React.useState();
-
     const location = useLocation();
     const backgroundColor = location.pathname === '/' ?'#073042' :'#202020'
 
@@ -17,10 +13,8 @@ export default function Header (props) {
     }
 
     React.useEffect(()=>{
-        window.addEventListener('resize', ()=>{
-            setWindowWidth(document.documentElement.clientWidth);
-        })
-    })
+
+    }, [])
 
     return (
         //устанавливаем background для header
@@ -28,7 +22,7 @@ export default function Header (props) {
             <div className="header__container">
                 <Link className="header__logo" to="/" />
                 {/* Выбирам содержимое header в зависимоти от pathname */}
-                {location.pathname === '/'
+                {props.loggedIn !== true
                     ?<div className="header__auth">
                         <Link className="header__signup-button" to="/signup">Регистрация</Link>
                         <Link className="header__signin-button" to="/signin">Войти</Link>
@@ -41,7 +35,7 @@ export default function Header (props) {
                     </div>
 
                     {/* Выбирам кнопку в зависимоти от ширины экрана */}
-                    {document.documentElement.clientWidth > 850
+                    {props.windowWidth > 850
                     ?<Link className="header__link-button" to="/profile">
                         Аккаунт
                         <img className="header__link-logo" src={linkButton} alt="Menu logo"/>

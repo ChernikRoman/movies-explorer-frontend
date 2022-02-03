@@ -87,6 +87,11 @@
 @import url(./components/MoviesCardList/blocks/__container/moviesCardList__container.css);
 @import url(./components/MoviesCardList/blocks/__more-button/movieCardList__more-button.css);
 
+/*Стили savedMoviesCardList*/
+@import url(./components/SavedMoviesCardList/blocks/savedMoviesCardList.css);
+@import url(./components/SavedMoviesCardList/blocks/__container/saviedMoviesCardList__container.css);
+@import url(./components/SavedMoviesCardList/blocks/__more-button/saviedMovieCardList__more-button.css);
+
 /*Стили moviesCard*/
 @import url(./components/MoviesCard/blocks/moviesCard.css);
 @import url(./components/MoviesCard/blocks/__movie-logo/movieCard__movie-logo.css);
@@ -103,6 +108,7 @@
 @import url(./components/Register/blocks/__form/register__form.css);
 @import url(./components/Register/blocks/__input/register__input.css);
 @import url(./components/Register/blocks/__submit-button/register__submit-button.css);
+@import url(./components/Register/blocks/__submit-button/_disabled/register__submit-button_disabled.css);
 
 /*Стили Login*/
 @import url(./components/Login/blocks/login.css);
@@ -112,6 +118,7 @@
 @import url(./components/Login/blocks/__form/login__form.css);
 @import url(./components/Login/blocks/__input/login__input.css);
 @import url(./components/Login/blocks/__submit-button/login__submit-button.css);
+@import url(./components/Login/blocks/__submit-button/_disabled/login__submit-button_disabled.css);
 
 /*Стили Profile*/
 @import url(./components/Profile/blocks/profile.css);
@@ -121,6 +128,7 @@
 @import url(./components/Profile/blocks/__form/profile__form.css);
 @import url(./components/Profile/blocks/__input/profile__input.css);
 @import url(./components/Profile/blocks/__submit-button/profile__submit-button.css);
+@import url(./components/Profile/blocks/__submit-button/_disabled/profile__submit-button_disabled.css);
 
 /*Стили Page404*/
 @import url(./components/Page404/blocks/page404.css);

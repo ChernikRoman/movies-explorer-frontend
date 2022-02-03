@@ -6,10 +6,10 @@ import Portfolio from '../Portfolio/Portfolio';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
-export default function Main() {
+export default function Main(props) {
     return (
         <>
-            <Header />
+            <Header windowWidth={props.windowWidth} loggedIn={props.loggedIn} />
             <Promo />
             <AboutProject />
             <Techs />

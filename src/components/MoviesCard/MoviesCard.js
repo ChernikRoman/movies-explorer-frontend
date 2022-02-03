@@ -1,27 +1,59 @@
-import React from 'react'
+import { useState, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import likeLogo from '../../images/moviesCard/like.svg'
 import likeLogoActive from '../../images/moviesCard/like-active.svg';
 import cross from '../../images/moviesCard/cross.svg';
+import timeConverter from "../../utils/timeConverter"
 
 export default function MoviesCard(props) {
+    const [isSaved, setIsSaved] = useState(false);
 
-    const [cardStatus, setCardStatus] = React.useState(props.status);
+    const location = useLocation();
 
-    const [imgSource, setImgSource] = React.useState(likeLogo);
+    useEffect(()=>{
+        props.data._id === undefined ? setIsSaved(false) : setIsSaved(true);
+    }, [props.data._id])
 
-    React.useEffect(()=>{
-        if (cardStatus !== 'normal')    //карточке можно передать 3 статуса 'normal', 'liked', 'saved'
-        cardStatus === 'liked' ? setImgSource(likeLogoActive) : setImgSource(cross);
-    })
+    useEffect(() => {
+        if (location.pathname === '/saved-movies') setIsSaved(true)
+    }, [location.pathname])
+
+    function handleCardClick(evt) {
+        if (!evt.target.className.includes('moviesCard__status-button')) {
+            window.open(props.data.trailerLink);
+        }
+    }
+
+    function handleStatusButtonClick() {
+        if (!isSaved === true) {
+            props.onSave({
+                country: props.data.country,
+                director: props.data.director,
+                duration: props.data.duration,
+                year: props.data.year,
+                description: props.data.description,
+                image: `https://api.nomoreparties.co${props.data.image.url}`,
+                trailer: props.data.trailerLink,
+                thumbnail: `https://api.nomoreparties.co${props.data.image.formats.thumbnail.url}`,
+                movieId: props.data.id,
+                nameRU: props.data.nameRU,
+                nameEN: props.data.nameEN,
+            });
+            setIsSaved(!isSaved)
+        } else {
+            props.onDelete(props.data.id);
+            setIsSaved(!isSaved)
+        }
+    }
 
     return(
-        <section className="moviesCard">
+        <section className="moviesCard" onClick={handleCardClick}>
             <div className="moviesCard__movie-info">
-                <h3 className="moviesCard__movie-name">{props.name}</h3>
-                <span className="moviesCard__movie-duration">{props.duration}</span>
-                <img className="moviesCard__status-button" src={imgSource} alt="status button" />
+                <h3 className="moviesCard__movie-name">{props.data.nameRU}</h3>
+                <span className="moviesCard__movie-duration">{timeConverter(props.data.duration)}</span>
+                <img className="moviesCard__status-button" src={location.pathname === '/movies' ? (isSaved ? likeLogoActive : likeLogo) : cross } alt="status button" onClick={handleStatusButtonClick}/>
             </div>
-            <img className="movieCard__movie-logo" src={props.img} alt="movie logo" />
+            <img className="movieCard__movie-logo" src={'https://api.nomoreparties.co' + props.data.image.url} alt="movie logo" />
         </section>
     )
 }

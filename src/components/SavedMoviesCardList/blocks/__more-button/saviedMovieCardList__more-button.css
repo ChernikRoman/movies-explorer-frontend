@@ -1,4 +1,4 @@
-.movieCardList__more-button {
+.savedMovieCardList__more-button {
     display: block;
     width: 320px;
     height: 36px;
@@ -10,7 +10,7 @@
 }
 
 @media (max-width: 520px) {
-    .movieCardList__more-button {
+    .savedMovieCardList__more-button {
         width: 240px;
     }
 }
