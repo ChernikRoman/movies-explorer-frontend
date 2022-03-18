@@ -43,23 +43,13 @@ function App() {
 
   useEffect(()=>{
     const currentUser = JSON.parse(localStorage.getItem('currentUser'))
-    if (!currentUser) {
-      mainApi.getMyUserData()
-      .then(res => {
-        localStorage.setItem('currentUser', JSON.stringify(res))
-        setCurrentUser({_id: res._id, name: res.name, email: res.email})
-        setloggedIn(true)
-        setIsLoaded(true)
-      })
-      .catch(err => {
-        setIsLoaded(true)
-      })
-    } else {
+    if (currentUser) {
       setCurrentUser({_id: currentUser._id, name: currentUser.name, email: currentUser.email})
       setloggedIn(true)
       setIsLoaded(true)
     }
-      window.addEventListener('resize', ()=>{ setTimeout(()=>{ setviewportWidth(window.innerWidth) }, 1000) })
+    setIsLoaded(true)
+    window.addEventListener('resize', ()=>{ setTimeout(()=>{ setviewportWidth(window.innerWidth) }, 1000) })
   },[])
 
   return (
