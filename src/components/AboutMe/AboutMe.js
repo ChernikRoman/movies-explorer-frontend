@@ -8,13 +8,13 @@ export default function AboutMe() {
                 <p className="about-me__student-name">Роман</p>
                 <p className="about-me__description">Фронтенд-разработчик, 27 лет</p>
                 <p className="about-me__text">
-                    Я родился и живу в Саратове, закончил факультет экономики СГУ. У меня есть жена 
-                    и дочь. Я люблю слушать музыку, а ещё увлекаюсь бегом. Недавно начал кодить. С 2015 года работал в компании «СКБ Контур».
+                    Я родился и жил в Кранодарском крае, там же закончил факультет транспортной логистики в Новороссийске.
+                    Я люблю слушать музыку, а ещё увлекаюсь автомобилями. С 2019 года работал в аэропорту "Шереметьево".
                     После того, как прошёл курс по веб-разработке, начал заниматься фриланс-заказами и ушёл с постоянной работы.
                 </p>
                 <div className="about-me__link">
                     <a href="http://facebook.com">Facebook</a>
-                    <a href="https://github.com/Rmn17">GitHub</a>
+                    <a href="https://github.com/Roman017">GitHub</a>
                 </div>
                 <img className="about-me__photo" src={studentPhoto} alt="Student photography" />
             </div>
