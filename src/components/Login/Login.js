@@ -31,6 +31,7 @@ export default function Login(props) {
         })
             .then(res => {
                 props.updateCurrentUser(res)
+                localStorage.setItem('currentUser', JSON.stringify(res))
             })
             .catch((err) => {
                 setErrorCode(`Произошла ошибка: ${err.statusText + ' ' + err.status}`)
