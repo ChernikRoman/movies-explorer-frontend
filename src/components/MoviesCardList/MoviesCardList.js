@@ -27,7 +27,6 @@ export default function MoviesCardList(props) {
         if (!localStorageMovie) {
             moviesApi.getMovies()
                 .then(movies => {
-                    console.log(movies)
                     mainApi.getSavedMovies()
                         .then((savedMovies)=>{
                             const updatedCard = setLikedCards(savedMovies, movies)
@@ -117,7 +116,6 @@ export default function MoviesCardList(props) {
             .then(res => {
                 delete movies[movieIndex]._id
                 localStorage.setItem('movies', JSON.stringify(movies))
-                console.log(res)
             })
             .catch(err => console.log(err))
     }

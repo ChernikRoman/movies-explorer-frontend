@@ -1,6 +1,5 @@
 export default function transform (arr) {
     let newArr = arr.map((item) => {
-        console.log()
         const imageUrl = item.image;
         const thumbnailUrl = item.thumbnail;
         return {

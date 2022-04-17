@@ -80,7 +80,7 @@ function App() {
         </Routes>
       </CurrentUserContext.Provider>
     </>
-    :<></>
+    :null
   );
 }
 

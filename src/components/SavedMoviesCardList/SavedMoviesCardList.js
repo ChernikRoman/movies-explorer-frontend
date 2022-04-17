@@ -75,7 +75,6 @@ export default function MoviesCardList(props) {
                 delete movies[movieIndex]._id
                 localStorage.setItem('movies', JSON.stringify(movies))
                 let moviesArrUpdated = moviesList.filter((element) => {
-                    console.log(element)
                     return element.id !== cardId
                 })
                 setMoviesList(moviesArrUpdated)
