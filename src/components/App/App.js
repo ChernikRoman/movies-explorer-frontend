@@ -12,6 +12,7 @@ import CurrentUserContext from '../../context/CurrentUserContext';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import mainApi from '../../utils/MainApi';
 import SavedMoviesCardList from '../SavedMoviesCardList/SavedMoviesCardList';
+import SafariPage from '../SafariPage/SafariPage';
 
 function App() {
   const [currentUser, setCurrentUser] = useState({})
@@ -42,6 +43,10 @@ function App() {
   }
 
   useEffect(()=>{
+    if(window.navigator.vendor.includes('Apple')) {
+      navigation('safari');
+    }
+
     const currentUser = JSON.parse(localStorage.getItem('currentUser'))
     if (currentUser) {
       setCurrentUser({_id: currentUser._id, name: currentUser.name, email: currentUser.email})
@@ -76,6 +81,7 @@ function App() {
           }/>
           <Route path="signin" element={<Login updateCurrentUser={handleSignIn} isLoggedIn={loggedIn} />}/>
           <Route path="signup" element={<Register updateCurrentUser={handleSignIn} isLoggedIn={loggedIn} />}/>
+          <Route path="safari" element={<SafariPage />}/>
           <Route path="*" element={<Page404 />}/>
         </Routes>
       </CurrentUserContext.Provider>
